@@ -1,10 +1,17 @@
 // Public profile details verified against the author's existing project configuration.
 // Update this file to personalize the portfolio without changing presentation code.
 export const profile = {
-  name: 'Evan Bartkowski', firstName: 'Evan', role: 'Developer & creative builder',
+  name: 'Evan Bartkowski', firstName: 'Evan',
+  role: 'Cybersecurity Operations Implementation Engineer',
+  roleShort: 'Cybersecurity Engineer & Developer', company: 'CyberMaxx',
+  location: 'Washington DC–Baltimore Area',
+  education: [
+    {school: 'Georgia Institute of Technology', degree: 'Master’s degree, Cybersecurity', expected: 'December 2028'},
+    {school: 'University of Maryland, Baltimore County', degree: 'Bachelor’s degree, Computer Science', from: 'August 2021', to: 'May 2025', focus: 'Artificial Intelligence'},
+  ],
   email: 'evanbartkowski1@gmail.com',
   github: 'https://github.com/evanbartkowski',
-  linkedin: 'https://www.linkedin.com/in/evan-bartkowski-31274b299',
+  linkedin: 'https://www.linkedin.com/in/evan-bartkowski-31274b299/',
 };
 export const projects = [
   {

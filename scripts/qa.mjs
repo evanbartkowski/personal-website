@@ -17,12 +17,12 @@ try {
   await page.goto(base, {waitUntil:'networkidle'});
   await page.locator('#reactor canvas').waitFor();
   await page.evaluate(() => document.fonts.ready);
-  assert.equal(await page.title(), 'Evan Bartkowski — Developer & Creative Builder');
+  assert.equal(await page.title(), 'Evan Bartkowski — Cybersecurity Engineer & Developer');
   assert.equal(await page.locator('.project-card').count(), 4);
   assert.equal(await page.locator('[data-profile="email"]').first().getAttribute('href'), 'mailto:evanbartkowski1@gmail.com');
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, 'desktop horizontal overflow');
   await page.screenshot({path:join(artifacts,'desktop.png')});
-  for (const section of ['#work','#about','#toolkit','#contact']) {
+  for (const section of ['#work','#about','#background','#toolkit','#contact']) {
     await page.locator(section).scrollIntoViewIfNeeded();
   }
   await page.evaluate(() => document.querySelectorAll('.reveal').forEach(item=>item.classList.add('visible')));
@@ -60,6 +60,14 @@ try {
   await page.locator('#terminal-input').fill('contact');
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('#terminal-dialog').evaluate(dialog=>dialog.open),false);
+  await page.keyboard.press('Control+k');
+  await page.locator('#terminal-input').fill('background');
+  await page.keyboard.press('Enter');
+  assert.equal(new URL(page.url()).hash, '#background');
+  assert.equal(await page.locator('.experience-history').getAttribute('open'),null);
+  await page.locator('.experience-history summary').click();
+  assert.equal(await page.locator('.timeline-item:visible').count(),4);
+  await page.locator('.experience-history summary').click();
   await page.locator('#copy-email').click();
   await page.waitForFunction(()=>document.querySelector('#toast').textContent.includes('EMAIL'));
   assert.match(await page.locator('#toast').textContent(), /EMAIL/);

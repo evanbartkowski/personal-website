@@ -168,7 +168,7 @@ document.addEventListener('keydown', event => {
     terminal.open ? terminal.close() : openTerminal();
   }
 });
-const terminalSections = { about: '#about', projects: '#work', work: '#work', skills: '#toolkit', toolkit: '#toolkit', contact: '#contact', home: '#home' };
+const terminalSections = { about: '#about', background: '#background', credentials: '#background', projects: '#work', work: '#work', skills: '#toolkit', toolkit: '#toolkit', contact: '#contact', home: '#home' };
 function navigateTo(selector) {
   terminal.close();
   $(selector)?.scrollIntoView({behavior: motionPaused ? 'instant' : 'smooth'});
@@ -185,7 +185,7 @@ $('#terminal-form').addEventListener('submit', event => {
   const command = raw.toLowerCase();
   if (terminalSections[command]) {navigateTo(terminalSections[command]); return;}
   switch (command) {
-    case 'help': terminalPrint('NAVIGATION\n  about      Meet the human\n  projects   Explore selected work\n  toolkit    Browse the equipment inventory\n  contact    Open a frequency\n  home       Back to the surface\n\nEXTRAS\n  whoami     Your vault identity\n  email      Evan’s email address\n  github     GitHub profile URL\n  linkedin   LinkedIn profile URL\n  secret     A small discovery\n  clear      Clear the screen\n  exit       Close the terminal'); break;
+    case 'help': terminalPrint('NAVIGATION\n  about      Meet the human\n  background Professional experience & credentials\n  projects   Explore selected work\n  toolkit    Browse the equipment inventory\n  contact    Open a frequency\n  home       Back to the surface\n\nEXTRAS\n  whoami     Your vault identity\n  email      Evan’s email address\n  github     GitHub profile URL\n  linkedin   LinkedIn profile URL\n  secret     A small discovery\n  clear      Clear the screen\n  exit       Close the terminal'); break;
     case 'whoami': terminalPrint('A curious human. Exactly the kind of visitor this vault was built for.'); break;
     case 'email': terminalPrint(profile.email); break;
     case 'github': terminalPrint(profile.github); break;
@@ -215,7 +215,7 @@ if ('IntersectionObserver' in window) {
   const navObserver = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) {
       for (const link of $$('.desktop-nav a')) {
-        if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+        if (link.hash === (entry.target.id === 'background' ? '#about' : `#${entry.target.id}`)) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       }
     }
