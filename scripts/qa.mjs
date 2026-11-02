@@ -1,6 +1,6 @@
 import { chromium } from '@playwright/test';
 import assert from 'node:assert/strict';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
 const artifacts = resolve('.artifacts');
@@ -19,7 +19,17 @@ try {
   await page.evaluate(() => document.fonts.ready);
   assert.equal(await page.title(), 'Evan Bartkowski — Cybersecurity Engineer & Developer');
   assert.equal(await page.locator('.project-card').count(), 4);
-  assert.equal(await page.locator('[data-profile="email"]').first().getAttribute('href'), 'mailto:evanbartkowski1@gmail.com');
+  assert.equal(await page.locator('[data-profile="email"]').first().getAttribute('href'), 'mailto:evan.bartkowski@icloud.com');
+  const sourceResume = await readFile('assets/Evan-Bartkowski-Resume.pdf');
+  const pdfResponse = await page.request.get(`${base}/assets/Evan-Bartkowski-Resume.pdf`);
+  assert.equal(pdfResponse.status(),200);
+  assert.match(pdfResponse.headers()['content-type'],/application\/pdf/);
+  assert.deepEqual(await pdfResponse.body(),sourceResume,'served resume must match source PDF');
+  const downloadEvent = page.waitForEvent('download');
+  await page.locator('.hero-ctas [data-profile="resume"]').click();
+  const download = await downloadEvent;
+  assert.equal(download.suggestedFilename(),'Evan-Bartkowski-Resume.pdf');
+  assert.deepEqual(await readFile(await download.path()),sourceResume,'downloaded PDF must match supplied file');
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, 'desktop horizontal overflow');
   await page.screenshot({path:join(artifacts,'desktop.png')});
   for (const section of ['#work','#about','#background','#toolkit','#contact']) {
@@ -48,6 +58,9 @@ try {
   await page.locator('#terminal-input').fill('help');
   await page.keyboard.press('Enter');
   assert.match(await page.locator('#terminal-output').textContent(), /NAVIGATION/);
+  await page.locator('#terminal-input').fill('resume');
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('#terminal-output a[download]').getAttribute('href'),'/assets/Evan-Bartkowski-Resume.pdf');
   await page.locator('#terminal-input').fill('<img src=x onerror=alert(1)>');
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('#terminal-output img').count(), 0, 'terminal input must be escaped');

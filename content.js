@@ -1,4 +1,4 @@
-// Public profile details verified against the author's existing project configuration.
+// Profile supplied by Evan through his resume and LinkedIn text.
 // Update this file to personalize the portfolio without changing presentation code.
 export const profile = {
   name: 'Evan Bartkowski', firstName: 'Evan',
@@ -7,9 +7,10 @@ export const profile = {
   location: 'Washington DC–Baltimore Area',
   education: [
     {school: 'Georgia Institute of Technology', degree: 'Master’s degree, Cybersecurity', expected: 'December 2028'},
-    {school: 'University of Maryland, Baltimore County', degree: 'Bachelor’s degree, Computer Science', from: 'August 2021', to: 'May 2025', focus: 'Artificial Intelligence'},
+    {school: 'University of Maryland, Baltimore County', degree: 'Bachelor’s degree, Computer Science', from: 'August 2021', to: 'May 2025', focus: 'Artificial Intelligence / Machine Learning'},
   ],
-  email: 'evanbartkowski1@gmail.com',
+  email: 'evan.bartkowski@icloud.com',
+  resume: '/assets/Evan-Bartkowski-Resume.pdf',
   github: 'https://github.com/evanbartkowski',
   linkedin: 'https://www.linkedin.com/in/evan-bartkowski-31274b299/',
 };

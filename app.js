@@ -155,6 +155,17 @@ function terminalPrint(message, className = '') {
   terminalOutput.append(line);
   terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }
+function terminalResume() {
+  const row = document.createElement('div');
+  const link = document.createElement('a');
+  link.className = 'text-link';
+  link.href = profile.resume;
+  link.download = 'Evan-Bartkowski-Resume.pdf';
+  link.textContent = 'Download Evan’s résumé (PDF) ↓';
+  row.append(link);
+  terminalOutput.append(row);
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
 terminalPrint('VAULT_OS v1.0 // CONNECTION ESTABLISHED\nWelcome, wanderer. This is Evan’s personal corner of the web.\nType help to explore, or press Escape to return.');
 function openTerminal() {
   if (!terminal.open) terminal.showModal();
@@ -185,9 +196,10 @@ $('#terminal-form').addEventListener('submit', event => {
   const command = raw.toLowerCase();
   if (terminalSections[command]) {navigateTo(terminalSections[command]); return;}
   switch (command) {
-    case 'help': terminalPrint('NAVIGATION\n  about      Meet the human\n  background Professional experience & credentials\n  projects   Explore selected work\n  toolkit    Browse the equipment inventory\n  contact    Open a frequency\n  home       Back to the surface\n\nEXTRAS\n  whoami     Your vault identity\n  email      Evan’s email address\n  github     GitHub profile URL\n  linkedin   LinkedIn profile URL\n  secret     A small discovery\n  clear      Clear the screen\n  exit       Close the terminal'); break;
+    case 'help': terminalPrint('NAVIGATION\n  about      Meet the human\n  background Professional experience & credentials\n  projects   Explore selected work\n  toolkit    Browse the equipment inventory\n  contact    Open a frequency\n  home       Back to the surface\n\nEXTRAS\n  whoami     Your vault identity\n  email      Evan’s email address\n  resume     Download the résumé PDF\n  github     GitHub profile URL\n  linkedin   LinkedIn profile URL\n  secret     A small discovery\n  clear      Clear the screen\n  exit       Close the terminal'); break;
     case 'whoami': terminalPrint('A curious human. Exactly the kind of visitor this vault was built for.'); break;
     case 'email': terminalPrint(profile.email); break;
+    case 'resume': case 'résumé': terminalResume(); break;
     case 'github': terminalPrint(profile.github); break;
     case 'linkedin': terminalPrint(profile.linkedin); break;
     case 'secret': terminalPrint('   ☢  PERK UNLOCKED: WILD CURIOSITY\n\nYou found the part built for people who press the interesting button.\nKeep that instinct. It makes good things happen.'); notify('PERK UNLOCKED: WILD CURIOSITY'); break;
