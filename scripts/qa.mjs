@@ -99,7 +99,7 @@ try {
   const mobile = await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true,reducedMotion:'reduce'});
   mobile.on('pageerror', error=>errors.push(`mobile: ${error.message}`));
   await mobile.goto(base,{waitUntil:'networkidle'});
-  assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, 'mobile horizontal overflow');
+  assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= 390), true, 'mobile horizontal overflow');
   assert.equal(await mobile.locator('#motion-toggle').getAttribute('aria-pressed'),'true','honors reduced motion');
   await mobile.screenshot({path:join(artifacts,'mobile.png')});
   await mobile.locator('.menu-toggle').click();
@@ -115,7 +115,8 @@ try {
   await mobile.screenshot({path:join(artifacts,'mobile-full.png'),fullPage:true});
   for (const width of [320,768,1024,1920]) {
     await mobile.setViewportSize({width,height:900});
-    assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth),true, `overflow at ${width}px`);
+    await mobile.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+    assert.equal(await mobile.evaluate(w => document.documentElement.scrollWidth <= w,width),true, `overflow at ${width}px`);
   }
   console.log('Responsive: 320/390/768/1024/1920px, navigation, mobile dossier, reduced motion passed.');
   const blocked = await browser.newPage({viewport:{width:1000,height:800}});

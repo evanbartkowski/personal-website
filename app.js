@@ -1,8 +1,10 @@
 import { profile, projects } from './content.js';
+import { mountCredentialArchive } from './credential-archive.js';
 
 const $ = (selector, context = document) => context.querySelector(selector);
 const $$ = (selector, context = document) => [...context.querySelectorAll(selector)];
 const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+mountCredentialArchive($('#credentials'));
 
 for (const link of $$('[data-profile]')) {
   const field = link.dataset.profile;
@@ -176,10 +178,11 @@ document.addEventListener('keydown', event => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
     event.preventDefault();
     if (projectDialog.open) projectDialog.close();
+    if ($('#certificate-dialog').open) $('#certificate-dialog').close();
     terminal.open ? terminal.close() : openTerminal();
   }
 });
-const terminalSections = { about: '#about', background: '#background', credentials: '#background', projects: '#work', work: '#work', skills: '#toolkit', toolkit: '#toolkit', contact: '#contact', home: '#home' };
+const terminalSections = { about: '#about', background: '#background', credentials: '#credentials', certificates: '#credentials', projects: '#work', work: '#work', skills: '#toolkit', toolkit: '#toolkit', contact: '#contact', home: '#home' };
 function navigateTo(selector) {
   terminal.close();
   $(selector)?.scrollIntoView({behavior: motionPaused ? 'instant' : 'smooth'});
@@ -196,7 +199,7 @@ $('#terminal-form').addEventListener('submit', event => {
   const command = raw.toLowerCase();
   if (terminalSections[command]) {navigateTo(terminalSections[command]); return;}
   switch (command) {
-    case 'help': terminalPrint('NAVIGATION\n  about      Meet the human\n  background Professional experience & credentials\n  projects   Explore selected work\n  toolkit    Browse the equipment inventory\n  contact    Open a frequency\n  home       Back to the surface\n\nEXTRAS\n  whoami     Your vault identity\n  email      Evan’s email address\n  resume     Download the résumé PDF\n  github     GitHub profile URL\n  linkedin   LinkedIn profile URL\n  secret     A small discovery\n  clear      Clear the screen\n  exit       Close the terminal'); break;
+    case 'help': terminalPrint('NAVIGATION\n  about       Meet the human\n  background  Professional experience & education\n  credentials Inspect the document archive\n  projects    Explore selected work\n  toolkit     Browse the equipment inventory\n  contact     Open a frequency\n  home        Back to the surface\n\nEXTRAS\n  whoami      Your vault identity\n  email       Evan’s email address\n  resume      Download the résumé PDF\n  github      GitHub profile URL\n  linkedin    LinkedIn profile URL\n  secret      A small discovery\n  clear       Clear the screen\n  exit        Close the terminal'); break;
     case 'whoami': terminalPrint('A curious human. Exactly the kind of visitor this vault was built for.'); break;
     case 'email': terminalPrint(profile.email); break;
     case 'resume': case 'résumé': terminalResume(); break;
@@ -227,7 +230,7 @@ if ('IntersectionObserver' in window) {
   const navObserver = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) {
       for (const link of $$('.desktop-nav a')) {
-        if (link.hash === (entry.target.id === 'background' ? '#about' : `#${entry.target.id}`)) link.setAttribute('aria-current', 'location');
+        if (link.hash === (['background','credentials'].includes(entry.target.id) ? '#about' : `#${entry.target.id}`)) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       }
     }

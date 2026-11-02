@@ -2,7 +2,7 @@ import { mkdir, copyFile, cp, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
 await mkdir(resolve(root, 'dist/vendor'), {recursive: true});
-for (const file of ['index.html', 'style.css', 'background.css', 'app.js', 'reactor.js', 'content.js', 'favicon.svg']) {
+for (const file of ['index.html', 'style.css', 'background.css', 'credentials.css', 'app.js', 'reactor.js', 'content.js', 'credential-data.js', 'credential-archive.js', 'favicon.svg']) {
   await copyFile(resolve(root, file), resolve(root, 'dist', file));
 }
 await cp(resolve(root, 'assets'), resolve(root, 'dist/assets'), {recursive: true});
