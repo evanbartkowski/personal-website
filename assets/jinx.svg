@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Jinx Kiss social card games</title>
+  <desc id="desc">A fan of original illustrated party cards in lavender, cream, ink, and coral, scattered over a violet playing surface.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1000" y2="650" gradientUnits="userSpaceOnUse"><stop stop-color="#c5b8df"/><stop offset="1" stop-color="#a591c1"/></linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="260" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#463253"/><stop offset="1" stop-color="#261d32"/></linearGradient>
+    <filter id="shadow" x="-70%" y="-50%" width="240%" height="220%"><feDropShadow dx="9" dy="24" stdDeviation="18" flood-color="#372a4c" flood-opacity=".25"/></filter>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#6a507c" fill-opacity=".15"/></pattern>
+  </defs>
+  <path fill="url(#background)" d="M0 0h1000v650H0z"/>
+  <path fill="url(#dots)" d="M0 0h1000v650H0z"/>
+  <circle cx="507" cy="349" r="248" stroke="#e1d7e9" stroke-opacity=".4"/><circle cx="507" cy="349" r="267" stroke="#e1d7e9" stroke-opacity=".2"/>
+  <path d="M65 91h137M65 99h83m732 455h77m-51 8h51" stroke="#725c86" stroke-opacity=".55"/>
+  <path d="m121 396 7-19 7 19 19 7-19 7-7 19-7-19-19-7z" fill="#f3eccf"/>
+  <path d="m818 173 5-15 5 15 15 5-15 5-5 15-5-15-15-5z" fill="#f4eacb"/>
+  <path d="m874 407 7-22 7 22 22 7-22 7-7 22-7-22-22-7z" fill="#55415f"/>
+  <circle cx="218" cy="171" r="8" stroke="#f2e6ca" stroke-width="3"/><circle cx="751" cy="529" r="5" fill="#efcbbc"/>
+  <!-- The backing card: simple diamond linework and a vivid edge. -->
+  <g transform="translate(190 163) rotate(-24 145 200)" filter="url(#shadow)">
+    <rect width="267" height="380" rx="16" fill="#eb856f"/>
+    <rect x="13" y="13" width="241" height="354" rx="8" stroke="#553b53" stroke-opacity=".4"/>
+    <path d="m134 86 75 103-75 103-75-103z" stroke="#f7dcbb" stroke-width="2"/><path d="m134 114 54 75-54 75-54-75z" stroke="#f7dcbb" stroke-opacity=".6"/>
+    <path d="m134 149 27 40-27 40-27-40z" fill="#553b53"/>
+    <path d="M32 34h23M32 42h15m181 296h-23m23-8h-15" stroke="#553b53" stroke-width="2"/>
+  </g>
+  <!-- Main ink card: custom cream heart, offset coral echo. -->
+  <g transform="translate(343 99) rotate(-7 145 210)" filter="url(#shadow)">
+    <rect width="282" height="411" rx="17" fill="url(#purple)"/>
+    <rect x="13" y="13" width="256" height="385" rx="8" stroke="#d1b9db" stroke-opacity=".4"/>
+    <text x="30" y="46" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#e6dbeb">JINX</text>
+    <path d="M244 31v20m-10-10h20" stroke="#cbb8d9" stroke-width="1.5"/>
+    <path d="M147 127c-51-55-122 13-72 68l72 75 72-75c49-56-22-122-72-68" fill="#e78578"/>
+    <path d="M137 117C86 62 15 130 65 185l72 75 72-75c49-56-22-122-72-68" fill="#f3e8c9"/>
+    <path d="m132 130-18 55h25l-8 42 43-65h-28l13-32" fill="#463253"/>
+    <text x="140" y="328" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="25" letter-spacing="1" fill="#f0e6ce">GOOD FRIENDS.</text>
+    <text x="140" y="357" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#ccb7d4">Bad decisions.</text>
+    <path d="M33 379h40m135 0h40" stroke="#cdb4d3" stroke-opacity=".6"/>
+  </g>
+  <!-- Cream foreground card: an original laughing face illustration. -->
+  <g transform="translate(548 159) rotate(17 136 200)" filter="url(#shadow)">
+    <rect width="271" height="390" rx="17" fill="#f2ead5"/>
+    <rect x="13" y="13" width="245" height="364" rx="8" stroke="#5d4265" stroke-opacity=".35"/>
+    <text x="31" y="46" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2.5" fill="#4a3456">LET'S PLAY</text>
+    <path d="m230 29 4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#e68470"/>
+    <circle cx="136" cy="189" r="77" fill="#d1b9d8"/>
+    <path d="m91 179 13-13 13 13m40 0 13-13 13 13" stroke="#51395c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101 206c4 37 62 43 70-1z" fill="#53395e"/>
+    <path d="m109 208 54-1-7 13h-40z" fill="#f3e8d0"/>
+    <path d="M126 235c9-14 23-16 32-10-6 12-21 16-32 10" fill="#e88b76"/>
+    <path d="M83 195h11m84 0h11" stroke="#e18475" stroke-width="7" stroke-linecap="round"/>
+    <text x="136" y="317" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="25" fill="#4a3456">YOUR TURN.</text>
+    <path d="M101 339h69m-54 8h39" stroke="#a58cab" stroke-linecap="round"/>
+  </g>
+  <!-- Scattered dice and counters complete the tabletop composition. -->
+  <g transform="translate(170 518) rotate(-13)"><rect width="54" height="54" rx="12" fill="#f1e6cd"/><circle cx="14" cy="14" r="4" fill="#5b3f61"/><circle cx="40" cy="14" r="4" fill="#5b3f61"/><circle cx="27" cy="27" r="4" fill="#5b3f61"/><circle cx="14" cy="40" r="4" fill="#5b3f61"/><circle cx="40" cy="40" r="4" fill="#5b3f61"/></g>
+  <circle cx="797" cy="98" r="23" fill="#e78f7d"/><circle cx="797" cy="98" r="16" stroke="#f3d2b8"/><path d="m790 98 5 5 9-11" stroke="#6a435f" stroke-width="2" stroke-linecap="round"/>
+  <text x="73" y="605" fill="#5f476f" font-family="monospace" font-size="10" letter-spacing="3">A LITTLE CHAOS. A LOT OF CONNECTION.</text>
+</svg>

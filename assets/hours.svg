@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Small Hours illustrated neighborhood</title>
+  <desc id="desc">An original isometric miniature town at golden hour, with warm houses, winding paths, a pond, gardens, and tall trees.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="800" y2="650" gradientUnits="userSpaceOnUse"><stop stop-color="#e7d8b5"/><stop offset="1" stop-color="#c6b68f"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#78958b"/><stop offset="1" stop-color="#a8b2a1"/></linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="4" dy="22" stdDeviation="18" flood-color="#6a5a3c" flood-opacity=".22"/></filter>
+    <pattern id="paper" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".8" fill="#725e3b" fill-opacity=".1"/><circle cx="27" cy="20" r=".5" fill="#725e3b" fill-opacity=".14"/></pattern>
+    <g id="pine"><path d="M-3 0h6v-46h-6" fill="#685d3b"/><path d="m0-115-27 47h15l-23 34h20L-39-5H39L15-34h20L12-68h15z" fill="#526b4d"/><path d="m0-115 0 110h39L15-34h20L12-68h15z" fill="#405d43"/></g>
+    <g id="bush"><ellipse rx="18" ry="9" fill="#69784f"/><circle cy="-8" r="13" fill="#879567"/><circle cx="-9" cy="-4" r="10" fill="#879567"/><circle cx="10" cy="-3" r="10" fill="#74845a"/></g>
+    <g id="lamp"><path d="M0 0v-64l11-8" stroke="#686448" stroke-width="4"/><path d="m6-75 15 0-3 12H9z" fill="#e6ba70"/><path d="M3 0h-7" stroke="#686448" stroke-width="3"/></g>
+    <g id="fence"><path d="m0 0 0-25m15 33V-17m15 33V-9m15 33V-1m15 33V7m15 33V15M0-18l75 40M0-8l75 40" stroke="#e7dcc0" stroke-width="4" stroke-linecap="round"/></g>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1000v650H0z"/>
+  <path fill="url(#paper)" d="M0 0h1000v650H0z"/>
+  <circle cx="785" cy="132" r="64" fill="#eed5a0"/><circle cx="785" cy="132" r="79" stroke="#c6a56b" stroke-opacity=".28"/>
+  <path d="M94 174c61-65 96-64 157-46m436 313c69-12 111 13 147 64M104 461c-30-41-36-70-5-113" stroke="#a18e63" stroke-opacity=".22" stroke-width="2"/>
+  <path d="M108 187c56-60 83-56 136-41m463 309c57-8 89 13 115 48M118 457c-26-37-32-62-6-104" stroke="#a18e63" stroke-opacity=".16"/>
+  <g filter="url(#shadow)">
+    <path d="m126 357 378-221 376 217-378 220z" fill="#7d8960"/>
+    <path d="M126 357v22l376 220v-26z" fill="#9d8a61"/><path d="m502 573 378-220v24L502 599z" fill="#7f7853"/>
+    <path d="m126 357 378-221 376 217-378 220z" fill="#bac19a"/>
+    <!-- Fields, lanes, and tiny landscaped edges. -->
+    <path d="m307 249 75-44 180 104-75 44z" fill="#a3ad7f"/><path d="m648 218 119 69-77 45-119-69z" fill="#aab58a"/>
+    <path d="m193 396 104-61 128 74-104 61z" fill="#a8b587"/>
+    <path d="m348 227 31-18 291 168-32 18z" fill="#ded5ae"/><path d="m235 432 422-245 28 16-422 245z" fill="#ded5ae"/>
+    <path d="m442 398 165 95 36-21-166-95z" fill="#ded5ae"/><path d="m363 236 291 168m-405 35 422-244" stroke="#c9bd91" stroke-width="2" stroke-dasharray="2 8"/>
+    <!-- Pond, stepping stones and a small deck. -->
+    <path d="M639 386c31-13 70-6 91 5s70 17 68 37-59 43-91 43-80-17-96-37 0-35 28-48" fill="#d8cca4"/>
+    <path d="M645 394c32-13 61-4 83 7s64 13 58 29-50 29-79 30-68-14-83-29 0-28 21-37" fill="url(#water)"/>
+    <path d="m660 415 18 1m40 19h32m-102-1h27m36-23h18" stroke="#dbe1c7" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+    <path d="m613 417 30-17 47 27-30 18z" fill="#ac8e59"/><path d="m620 413 47 27m-37-33 47 28m-37-34 47 28" stroke="#d7bd84" stroke-width="2"/>
+    <path d="m642 401 0-14m46 40v-14" stroke="#7c6c42" stroke-width="4"/>
+    <!-- Tall main house, every plane drawn to the isometric grid. -->
+    <path d="m422 351 91 53 100-58-91-53z" fill="#8f8c62" fill-opacity=".35"/>
+    <path d="m420 271 92 53v83l-92-53z" fill="#e5d2a5"/>
+    <path d="m512 324 87-51v84l-87 50z" fill="#c5b086"/>
+    <path d="m407 270 99-86 106 88-100 59z" fill="#946650"/>
+    <path d="m506 184 0 74 106 14z" fill="#b17a57"/>
+    <path d="m407 270 99-86v74l-86 50z" fill="#bb8a62"/>
+    <path d="m409 270 103 59 101-58" stroke="#71533e" stroke-width="5" stroke-linejoin="round"/>
+    <path d="m470 261 20 12v27l-20-12z" fill="#f6df9c"/><path d="m479 267 0 27m-9-20 20 12" stroke="#8a7957" stroke-width="2"/>
+    <path d="m434 304 23 13v29l-23-13z" fill="#718271"/><path d="m445 310 0 29m-11-22 23 14" stroke="#d8caa1" stroke-width="2"/>
+    <path d="m476 328 23 13v29l-23-13z" fill="#e8cd8d"/><path d="m487 334 0 29m-11-22 23 14" stroke="#8a7957" stroke-width="2"/>
+    <path d="m539 330 24-14v31l-24 14z" fill="#f0d491"/><path d="m551 323 0 31m-12-8 24-14" stroke="#8d7a54" stroke-width="2"/>
+    <path d="m576 308 12-7v23l-12 7z" fill="#6f7f6a"/>
+    <path d="m532 367 28-16v28l-28 16z" fill="#8f6a47"/><circle cx="552" cy="372" r="1.5" fill="#edd59e"/>
+    <path d="m521 400 48-28 15 9-48 28z" fill="#d6c6a0"/><path d="m525 409 47-28 10 6-47 28z" fill="#b7a67f"/>
+    <path d="m552 216 0-41 20-11 15 9v44l-16 9z" fill="#a88462"/><path d="m552 175 20-11 15 9-19 11z" fill="#d0ac79"/><path d="m568 184 19-11v44l-19 11z" fill="#8e6c50"/>
+    <!-- Smaller ochre cottage on the left. -->
+    <path d="m223 341 68 39 73-42-68-39z" fill="#7f8960" fill-opacity=".35"/>
+    <path d="m231 294 61 35v51l-61-35z" fill="#cba768"/><path d="m292 329 62-36v51l-62 36z" fill="#b9965e"/>
+    <path d="m219 293 64-64 84 64-75 44z" fill="#69785a"/><path d="m283 229 0 27 84 37z" fill="#83916c"/><path d="m219 293 64-64v27l-52 45z" fill="#95a478"/>
+    <path d="m218 294 74 43 75-44" stroke="#59664b" stroke-width="4"/>
+    <path d="m246 314 17 10v22l-17-10zm29 17 12 7v22l-12-7z" fill="#e8d29c"/><path d="m314 331 21-12v33l-21 12z" fill="#6d7055"/>
+    <!-- Far cream workshop and tiny garden. -->
+    <path d="m668 274 60 35 66-38-60-35z" fill="#8c956b" fill-opacity=".35"/>
+    <path d="m674 228 53 31v50l-53-31z" fill="#e7d5ac"/><path d="m727 259 54-31v50l-54 31z" fill="#c9b790"/>
+    <path d="m665 228 56-57 70 57-64 37z" fill="#9a7752"/><path d="m721 171 0 24 70 33z" fill="#b58d5b"/>
+    <path d="m685 249 14 8v20l-14-8zm25 14 12 7v20l-12-7z" fill="#9ca38a"/><path d="m744 260 22-13v31l-22 13z" fill="#7c7555"/>
+    <path d="m780 295 41 24-47 27-41-24z" fill="#89976e"/><path d="m745 320 43 24m-32-31 43 24m-32-31 43 24" stroke="#c9b78e" stroke-width="5"/>
+    <path d="m755 321 4-5m8 11 4-5m8 11 4-5m-16-12 4-5m8 11 4-5m8 11 4-5" stroke="#52714f" stroke-width="4" stroke-linecap="round"/>
+    <!-- Distinct trees, bushes, fences, lamps, and an inhabitant. -->
+    <use href="#pine" transform="translate(388 274) scale(.73)"/><use href="#pine" transform="translate(335 223) scale(.64)"/>
+    <use href="#pine" transform="translate(587 200) scale(.72)"/><use href="#pine" transform="translate(625 228) scale(.9)"/>
+    <use href="#pine" transform="translate(794 365) scale(.85)"/><use href="#pine" transform="translate(822 350) scale(.65)"/>
+    <use href="#pine" transform="translate(368 486) scale(.87)"/><use href="#pine" transform="translate(332 466) scale(.68)"/>
+    <use href="#bush" transform="translate(400 352)"/><use href="#bush" transform="translate(412 363) scale(.7)"/>
+    <use href="#bush" transform="translate(596 368) scale(.7)"/><use href="#bush" transform="translate(633 476) scale(.7)"/>
+    <use href="#bush" transform="translate(712 495) scale(.8)"/><use href="#bush" transform="translate(245 398) scale(.65)"/>
+    <use href="#fence" transform="translate(164 364) scale(.75)"/><use href="#fence" transform="translate(508 520) scale(.75)"/>
+    <use href="#lamp" transform="translate(366 373) scale(.75)"/><use href="#lamp" transform="translate(606 338) scale(.75)"/>
+    <ellipse cx="474" cy="441" rx="12" ry="5" fill="#7f805b" fill-opacity=".35"/>
+    <path d="m470 439 0-16h8v16" fill="#566d66"/><path d="m471 439-2 9m7-9 2 8" stroke="#665e46" stroke-width="3" stroke-linecap="round"/><circle cx="474" cy="418" r="5" fill="#c99566"/>
+    <path d="m466 426-5 7m17-7 5 6" stroke="#c99566" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- Cartographic margin details. -->
+  <g transform="translate(122 111)" stroke="#a38a5b"><circle r="23"/><path d="M0-32v64m-32-32h64" stroke-opacity=".5"/><path d="m0-19-6 19 6-3 6 3z" fill="#9a7e4c" stroke="none"/></g>
+  <text x="118" y="72" fill="#8c7549" font-family="monospace" font-size="9" letter-spacing="2">N</text>
+  <text x="76" y="604" fill="#7a6845" font-family="monospace" font-size="10" letter-spacing="3">A WORLD OF ORDINARY, EXTRAORDINARY LIVES.</text>
+  <path d="M800 590h121m-121-5v10m40-10v10m40-10v10m41-10v10" stroke="#9a8459"/>
+</svg>

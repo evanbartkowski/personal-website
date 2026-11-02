@@ -1,0 +1,18 @@
+﻿Locally hosted Google Fonts assets. Retrieved November 2, 2026.
+
+Space Grotesk -- variable normal font, weight axis 400-700, Latin subset.
+Asset: space-grotesk.woff2
+Source: https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2
+License: SIL Open Font License 1.1; see SPACE-GROTESK-OFL.txt.
+License source: https://github.com/google/fonts/blob/main/ofl/spacegrotesk/OFL.txt
+
+IBM Plex Mono -- normal font, regular weight 400, Latin subset.
+Asset: ibm-plex-mono.woff2
+Source: https://fonts.gstatic.com/s/ibmplexmono/v20/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2
+License: SIL Open Font License 1.1; see IBM-PLEX-MONO-OFL.txt.
+License source: https://github.com/google/fonts/blob/main/ofl/ibmplexmono/OFL.txt
+
+Font metadata was obtained from the official Google Fonts CSS API:
+https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=IBM+Plex+Mono&display=swap
+
+These typefaces are original font distributions, not modified fonts.

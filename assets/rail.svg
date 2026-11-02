@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">DREADRAIL freight-car corridor</title>
+  <desc id="desc">A moody original perspective illustration inside a steel train carriage, with amber lights, pipes, a closed containment door, and one red warning lamp.</desc>
+  <defs>
+    <linearGradient id="back" x1="0" y1="0" x2="0" y2="650" gradientUnits="userSpaceOnUse"><stop stop-color="#111e22"/><stop offset="1" stop-color="#344042"/></linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="415" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#243334"/><stop offset=".7" stop-color="#3c4540"/><stop offset="1" stop-color="#172223"/></linearGradient>
+    <linearGradient id="right" x1="1000" y1="0" x2="585" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#1c2c30"/><stop offset=".7" stop-color="#34403d"/><stop offset="1" stop-color="#162122"/></linearGradient>
+    <linearGradient id="floor" x1="500" y1="285" x2="500" y2="650" gradientUnits="userSpaceOnUse"><stop stop-color="#162120"/><stop offset="1" stop-color="#3d4843"/></linearGradient>
+    <radialGradient id="light"><stop stop-color="#e8b56a" stop-opacity=".5"/><stop offset="1" stop-color="#e8b56a" stop-opacity="0"/></radialGradient>
+    <radialGradient id="red"><stop stop-color="#fc7553"/><stop offset=".13" stop-color="#d6462e" stop-opacity=".65"/><stop offset="1" stop-color="#c9472c" stop-opacity="0"/></radialGradient>
+    <radialGradient id="vignette"><stop offset=".42" stop-color="#030c0e" stop-opacity="0"/><stop offset="1" stop-color="#030c0e" stop-opacity=".65"/></radialGradient>
+    <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 0 12 12M-6 6l12 12M6-6l12 12" stroke="#172624" stroke-width="1"/></pattern>
+    <pattern id="warning" width="25" height="25" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><path d="M0 0h12v25H0z" fill="#c5a369"/><path d="M12 0h13v25H12z" fill="#2b3430"/></pattern>
+  </defs>
+  <path fill="url(#back)" d="M0 0h1000v650H0z"/>
+  <!-- Strong one-point perspective, layered metal surfaces. -->
+  <path d="M0 0 410 179v233L0 650z" fill="url(#left)"/>
+  <path d="m1000 0-410 179v233l410 238z" fill="url(#right)"/>
+  <path d="M0 0h1000L590 179H410z" fill="#17272a"/>
+  <path d="M0 650h1000L590 412H410z" fill="url(#floor)"/>
+  <path d="M0 650h1000L590 412H410z" fill="url(#hatch)" opacity=".4"/>
+  <path d="M411 179h178v234H411z" fill="#122021"/>
+  <path d="M0 34 409 194M1000 34 591 194M0 615 410 401m590 214L590 401" stroke="#758074" stroke-opacity=".28" stroke-width="4"/>
+  <path d="m0 54 394 153v195L0 633m1000-579L606 207v195l394 231" stroke="#0d1a1d" stroke-width="11"/>
+  <!-- Repeating ribs along the walls and ceiling. -->
+  <path d="m76 0 0 607m132-550v474m105-428v368m67-338v300m544-433v607M792 57v474M687 103v368m-67-338v300" stroke="#0d1b1e" stroke-width="14"/>
+  <path d="m82 0 0 602m132-541v467m105-420v360m67-332v294m544-430v602M798 61v467M693 108v360m-67-332v294" stroke="#667165" stroke-opacity=".35" stroke-width="3"/>
+  <path d="M151 0 436 179m-87-179 108 179M849 0 564 179M651 0 543 179" stroke="#0c1b1f" stroke-width="12"/>
+  <path d="M159 0 440 179M841 0 560 179" stroke="#617063" stroke-opacity=".3" stroke-width="3"/>
+  <path d="M0 191 410 246M1000 191 590 246M0 414 410 339m590 75L590 339" stroke="#111f21" stroke-width="6"/>
+  <path d="M0 198 410 250M1000 198 590 250" stroke="#82907a" stroke-opacity=".13"/>
+  <!-- Routed pipes, clamps and insulated cables. -->
+  <path d="M0 106c69 23 138 33 216 67l171 61" stroke="#121e20" stroke-width="16"/><path d="M0 101c69 23 138 33 216 67l171 61" stroke="#687364" stroke-width="7"/>
+  <path d="M0 130c69 22 138 32 216 62l171 57" stroke="#111d1f" stroke-width="11"/><path d="M0 128c69 22 138 32 216 62l171 57" stroke="#425449" stroke-width="4"/>
+  <path d="m140 142-6 27m111 13-6 23m83 4-5 18" stroke="#8b8b71" stroke-width="4"/>
+  <path d="M998 128 842 181l-15 21-131 45-22 1-57 16" stroke="#0b181c" stroke-width="12"/><path d="M998 123 842 176l-15 21-131 45-22 1-57 16" stroke="#667267" stroke-width="5"/>
+  <path d="m856 163 8 25m-120 27 5 18" stroke="#858873" stroke-width="4"/>
+  <path d="m968 45-101 35-9 12-98 32-19-2-93 39" stroke="#a48b5b" stroke-opacity=".6" stroke-width="2"/>
+  <!-- Recessed left window with its steel frame and reflections. -->
+  <path d="m98 216 105 14v161l-105 19z" fill="#0a171b" stroke="#566259" stroke-width="6"/>
+  <path d="m112 233 77 9v134l-77 13z" fill="#0d2025"/>
+  <path d="m112 242 77 54v43l-77-56z" fill="#40534f" fill-opacity=".23"/>
+  <path d="m115 362 72-11m-72 23 72-11" stroke="#d0bc8b" stroke-opacity=".15"/>
+  <path d="m97 222 105 13m-105 169 105-18" stroke="#84907c" stroke-opacity=".3"/>
+  <!-- Right containment service panel. -->
+  <path d="m797 243 109-15v181l-109-21z" fill="#283733" stroke="#657264" stroke-width="4"/>
+  <path d="m811 261 80-10v49l-80 3z" fill="#0b1a1a"/>
+  <path d="m821 271 43-4m-43 13 30-2" stroke="#86a47b" stroke-opacity=".8" stroke-width="2"/>
+  <path d="m812 322 73 4m-73 8 73 5m-73 8 73 7m-73 7 73 8" stroke="#111f20" stroke-width="3"/>
+  <circle cx="874" cy="280" r="4" fill="#b99458"/>
+  <path d="m799 243 107-15v12l-107 14z" fill="url(#warning)" opacity=".7"/>
+  <!-- Distant sealed door, wheel lock, cables and hard metallic rim. -->
+  <path d="M429 192h142v214H429z" fill="#526052"/>
+  <path d="M435 198h130v202H435z" fill="#1b2b29" stroke="#07171a" stroke-width="4"/>
+  <path d="M444 207h112v184H444z" fill="#303f36"/>
+  <path d="M449 211h102v173H449z" stroke="#5a6757" stroke-opacity=".6"/>
+  <path d="M493 207h14v184h-14z" fill="#172a27"/>
+  <path d="M462 224h76v32h-76z" fill="#101e20" stroke="#718069" stroke-opacity=".5"/>
+  <path d="M469 230h62v20h-62z" fill="#31483f"/>
+  <path d="m471 245 32-13 29 12" stroke="#bbc19a" stroke-opacity=".2"/>
+  <circle cx="499" cy="306" r="26" fill="#162a27" stroke="#849078" stroke-width="4"/>
+  <circle cx="499" cy="306" r="16" stroke="#576b56" stroke-width="3"/>
+  <path d="M499 281v50m-25-25h50m-43-18 36 36m0-36-36 36" stroke="#829071" stroke-width="3"/>
+  <circle cx="499" cy="306" r="6" fill="#b2af7c"/>
+  <path d="M447 350h15v16h-15m91-16h15v16h-15" fill="#5d6a54"/>
+  <path d="M428 406h144v10H428z" fill="url(#warning)"/>
+  <path d="M429 189h142v6H429z" fill="#6c7560"/>
+  <rect x="484" y="164" width="32" height="16" rx="3" fill="#112025"/><rect x="490" y="168" width="20" height="8" rx="2" fill="#de6244"/>
+  <circle cx="500" cy="172" r="58" fill="url(#red)"/>
+  <!-- Hanging amber fixtures and atmospheric pools of light. -->
+  <ellipse cx="309" cy="282" rx="128" ry="193" fill="url(#light)" opacity=".55"/>
+  <ellipse cx="691" cy="282" rx="128" ry="193" fill="url(#light)" opacity=".4"/>
+  <path d="m277 169 50 12v42l-50-8z" fill="#172625" stroke="#77816b" stroke-width="3"/>
+  <path d="m286 180 31 7v24l-31-5z" fill="#dfb574"/><path d="m285 190 33 7m-19-14v25" stroke="#83784f" stroke-width="3"/>
+  <path d="m723 169-50 12v42l50-8z" fill="#172625" stroke="#77816b" stroke-width="3"/>
+  <path d="m714 180-31 7v24l31-5z" fill="#dbb170"/><path d="m715 190-33 7m19-14v25" stroke="#83784f" stroke-width="3"/>
+  <path d="m449 135 51-10 51 10-51 13z" fill="#5e6b5b"/><path d="m462 136 38-7 38 7-38 8z" fill="#cbb581"/>
+  <!-- Walkway rails, crossplates and barely visible floor reflections. -->
+  <path d="M246 650 447 414m307 236L553 414" stroke="#111f20" stroke-width="18"/>
+  <path d="M251 650 450 414m299 236L550 414" stroke="#85917b" stroke-opacity=".42" stroke-width="3"/>
+  <path d="M337 545h326M373 501h254m-223-35h192m-169-26h145" stroke="#121f20" stroke-width="5"/>
+  <path d="m312 586 57-61m292 63-44-46" stroke="#c8aa6a" stroke-opacity=".15" stroke-width="19"/>
+  <path d="m485 448-8 43m24-51-1 77m19-73 11 42" stroke="#b8573b" stroke-opacity=".16" stroke-width="4"/>
+  <!-- Rivets and worn markings. -->
+  <g fill="#91a087" fill-opacity=".4"><circle cx="85" cy="206" r="3"/><circle cx="85" cy="427" r="3"/><circle cx="217" cy="225" r="2.5"/><circle cx="217" cy="390" r="2.5"/><circle cx="323" cy="244" r="2"/><circle cx="323" cy="361" r="2"/><circle cx="915" cy="206" r="3"/><circle cx="915" cy="427" r="3"/><circle cx="783" cy="225" r="2.5"/><circle cx="783" cy="390" r="2.5"/><circle cx="677" cy="244" r="2"/><circle cx="677" cy="361" r="2"/></g>
+  <path d="m239 307 22 0m-22 5 12 0m471 17 31 2m-31 4 18 1" stroke="#9eaa87" stroke-opacity=".2"/>
+  <text x="30" y="341" fill="#b8b184" fill-opacity=".5" font-family="monospace" font-size="13" letter-spacing="4" transform="rotate(-7 30 341)">FREIGHT</text>
+  <path fill="url(#vignette)" d="M0 0h1000v650H0z"/>
+  <text x="71" y="602" fill="#c1c3a8" fill-opacity=".7" font-family="monospace" font-size="10" letter-spacing="3">SOME CARGO WAS NEVER MEANT TO ARRIVE.</text>
+  <path d="M783 597h139" stroke="#a4aa8e" stroke-opacity=".3"/><circle cx="922" cy="597" r="3" fill="#d96c4c"/>
+</svg>
