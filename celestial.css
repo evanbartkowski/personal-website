@@ -1,0 +1,16 @@
+/* Each document paints its own restrained celestial scene. All visible
+   atmosphere comes from cached Canvas sprites; the base remains pitch black. */
+:root{--bg:#000;--green:#849bab}
+body.blog-page{--bg:#000}
+html,body,body.blog-page{background:#000}
+.ambient-field{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#000;isolation:isolate}
+.ambient-field canvas{position:absolute;inset:0;width:100%;height:100%;opacity:1}
+.ambient-field.ambient-still canvas{will-change:auto}
+.ambient-field::after,.ambient-orbit,.ambient-grain{display:none}
+.pointer-aura{position:fixed;left:0;top:0;z-index:120;pointer-events:none;width:110px;height:110px;background:radial-gradient(circle,rgba(143,213,255,.2),rgba(143,213,255,.065) 35%,rgba(143,213,255,.015) 60%,transparent 76%);transform:translate(calc(var(--pointer-x,-100px) - 55px),calc(var(--pointer-y,-100px) - 55px));opacity:0;will-change:transform;mix-blend-mode:screen}
+.pointer-aura::before,.pointer-aura::after{content:none;display:none}
+html[data-cursor-active="true"] .pointer-aura{opacity:.9}
+dialog[open]::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;background:radial-gradient(55px circle at var(--pointer-x,-100px) var(--pointer-y,-100px),rgba(143,213,255,.16),rgba(143,213,255,.045) 40%,transparent 76%)}
+.blog-ambient{display:none}.blog-header,.blog-footer{position:relative;z-index:1}
+@media(hover:none),(pointer:coarse){.pointer-aura,dialog[open]::after{display:none}}
+@media(prefers-reduced-motion:reduce){.pointer-aura,dialog[open]::after{display:none}}

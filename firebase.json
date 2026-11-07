@@ -1,0 +1,155 @@
+{
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "portfolio-chat",
+      "runtime": "nodejs22",
+      "ignore": [
+        "node_modules",
+        ".git",
+        ".env",
+        ".env.*",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ],
+      "predeploy": [
+        "node scripts/prepare-functions.mjs"
+      ]
+    }
+  ],
+  "hosting": {
+    "site": "personal-website-7d04c",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "predeploy": [
+      "npm run build"
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/api/chat",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-store"
+          },
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          }
+        ]
+      },
+      {
+        "source": "/api/chat/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-store"
+          },
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          }
+        ]
+      },
+      {
+        "source": "/blog/editor{,/**}",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          }
+        ]
+      },
+      {
+        "source": "/api/visitors",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "private, no-store"
+          },
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          }
+        ]
+      },
+      {
+        "source": "/api/arcade",
+        "headers": [
+          {"key": "Cache-Control", "value": "private, no-store"},
+          {"key": "X-Robots-Tag", "value": "noindex, nofollow"}
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/blog",
+        "destination": "/blog.html"
+      },
+      {
+        "source": "/blog/",
+        "destination": "/blog.html"
+      },
+      {
+        "source": "/blog/editor",
+        "destination": "/blog.html"
+      },
+      {
+        "source": "/blog/editor/",
+        "destination": "/blog.html"
+      },
+      {
+        "source": "/api/chat",
+        "function": {
+          "functionId": "portfolioChat",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/api/chat/**",
+        "function": {
+          "functionId": "portfolioChat",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/api/visitors",
+        "function": {
+          "functionId": "visitorAnalytics",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/api/arcade",
+        "function": {"functionId": "arcadeScores", "region": "us-central1"}
+      }
+    ]
+  },
+  "firestore": [
+    {
+      "database": "portfolio-visitors",
+      "rules": "firestore.visitors.rules"
+    }
+  ]
+}

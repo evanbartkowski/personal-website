@@ -5,9 +5,10 @@ export const profile = {
   role: 'Cybersecurity Operations Implementation Engineer',
   roleShort: 'Cybersecurity Engineer & Developer', company: 'CyberMaxx',
   location: 'Washington DC–Baltimore Area',
+  studio: { name: 'Mesachi', type: 'Game studio', url: null },
   education: [
-    {school: 'Georgia Institute of Technology', degree: 'Master’s degree, Cybersecurity', expected: 'December 2028'},
-    {school: 'University of Maryland, Baltimore County', degree: 'Bachelor’s degree, Computer Science', from: 'August 2021', to: 'May 2025', focus: 'Artificial Intelligence / Machine Learning'},
+    {school: 'Georgia Institute of Technology', specialization: 'Information Security', programCredits: 32, practicumCredits: 5, programCurriculum: ['Applied cryptography', 'Secure computer systems', 'Network security', 'Information security lab', 'Security policy'], ranking: {rank: 2, category: 'Online cybersecurity master programs in the United States', publisher: 'MastersInAI.org', year: 2026, url: 'https://www.mastersinai.org/degrees/online-masters-in-cybersecurity/'}, degree: 'Master’s degree, Cybersecurity', expected: 'December 2028', status: 'In progress', summary: 'Continuing cybersecurity graduate study alongside enterprise security implementation at CyberMaxx.', professionalApplication: ['SIEM', 'EDR', 'Network defense', 'Security automation']},
+    {school: 'University of Maryland, Baltimore County', researchClassification: 'Carnegie R1 public research university', ranking: {rank: 3, category: 'Computer science colleges in Maryland', publisher: 'Niche', year: 2027, url: 'https://www.niche.com/colleges/search/best-colleges-for-computer-science/s/maryland/'}, degree: 'Bachelor’s degree, Computer Science', from: 'August 2021', to: 'May 2025', focus: 'Artificial Intelligence / Machine Learning', coursework: ['Neural networks', 'Computer security', 'Operating systems', 'Algorithms', 'Software engineering'], projects: ['C / Linux systems programming: shell, POSIX threads, priority scheduling, FUSE filesystem, kernel-module integration', 'Team social-bot detection research: metadata neural networks, relational graph models, domain adaptation across Twitter and Reddit'], honors: ['Dean’s List, Fall 2024; award dated January 21, 2025']},
   ],
   email: 'evan.bartkowski@icloud.com',
   resume: '/assets/Evan-Bartkowski-Resume.pdf',
@@ -16,7 +17,9 @@ export const profile = {
 };
 export const projects = [
   {
-    id: 'mma', number: '01', title: 'MMA Cipher', category: 'DATA · WEB APPLICATION',
+    id: 'mma', artwork: '/assets/artwork/mma-cipher-screenshot.webp', number: '01', title: 'MMA Cipher', group: 'web', category: 'DATA · WEB APPLICATION',
+    imageAlt: 'MMA Cipher dashboard showing prediction models, fight metrics, and upcoming UFC events',
+    imageType: 'screenshot', imageWidth: 2540, imageHeight: 1265,
     short: 'Finding the signal in the fight.',
     description: 'A UFC prediction platform that turns fighter statistics, matchup data, and upcoming events into an explorable fight dashboard.',
     problem: 'Fight data lives across events, rankings, and individual fighter records. A useful matchup starts with bringing that context together.',
@@ -26,7 +29,9 @@ export const projects = [
     url: 'https://mma-oracle.web.app', linkLabel: 'Explore MMA Cipher',
   },
   {
-    id: 'jinx', number: '02', title: 'JinxKiss', category: 'INTERACTIVE · SOCIAL GAME',
+    id: 'jinx', artwork: '/assets/artwork/jinxkiss-screenshot.webp', number: '02', title: 'JinxKiss', group: 'web', category: 'INTERACTIVE · SOCIAL GAME',
+    imageAlt: 'JinxKiss game selection page with Truth or Dare, Never Have I Ever, and other party games',
+    imageType: 'screenshot', imageWidth: 2555, imageHeight: 1212,
     short: 'A little chaos. A lot of connection.',
     description: 'A browser-based party game built around prompt cards, distinct game modes, and custom decks. Designed to get people off script.',
     problem: 'A social game has to keep the next interaction simple while making its prompts feel right for the people and mode playing.',
@@ -36,7 +41,8 @@ export const projects = [
     url: 'https://jinxkiss.com', linkLabel: 'Play JinxKiss',
   },
   {
-    id: 'hours', number: '03', title: 'Small Hours', category: 'SIMULATION · DESKTOP',
+    id: 'hours', artwork: '/assets/artwork/hours.webp', number: '03', title: 'Small Hours', group: 'worlds', category: 'SIMULATION · DESKTOP',
+    imageAlt: 'Warmly lit cutaway cottage diorama with furnished rooms, a garden, and a miniature stream',
     short: 'An entire life in the little decisions.',
     description: 'A native life simulation where everyday choices unfold into careers, relationships, finances, and the unexpected turns in between.',
     problem: 'A life simulation needs a lot of interconnected systems, yet each decision should remain understandable and personal.',
@@ -46,7 +52,8 @@ export const projects = [
     url: null, linkLabel: null,
   },
   {
-    id: 'rail', number: '04', title: 'DREADRAIL', category: '3D · SURVIVAL HORROR',
+    id: 'rail', artwork: '/assets/artwork/rail.webp', number: '04', title: 'DREADRAIL', group: 'worlds', category: '3D · SURVIVAL HORROR',
+    imageAlt: 'Detailed industrial train corridor with weathered metal, pipes, and warm amber lighting',
     short: 'Keep the lights on. Stay on the rails.',
     description: 'A browser survival-horror game that puts its tension into the environment: camera feeds, scarce resources, and a train that never feels safe.',
     problem: 'Horror depends on reliable controls and atmosphere. Interfaces should feel like part of the world without hiding the information players need.',
@@ -55,4 +62,89 @@ export const projects = [
     tags: ['Three.js', 'React', 'TypeScript', 'Game systems'], color: 'steel',
     url: null, linkLabel: null,
   },
+  {
+    id: 'starlight', artwork: '/assets/artwork/starlight-fishing-screenshot.webp', number: '05', title: 'Starlight Fishing', group: 'web', category: 'EXPLORATION · BROWSER GAME',
+    imageAlt: 'Starlight Fishing gameplay with a sailboat above a colorful ocean and glowing fish',
+    imageType: 'screenshot', imageWidth: 2558, imageHeight: 1195,
+    short: 'A cast into the unknown.',
+    description: 'An atmospheric browser fishing game about exploring seven fantasy seas, discovering unusual catches, and building a personal aquarium.',
+    problem: 'An exploration game needs a world that rewards curiosity while keeping its controls approachable on both a mouse and a touch screen.',
+    approach: 'JavaScript and HTML5 Canvas bring the ocean to life, with Web Audio for atmosphere and interconnected systems for catches, tackle, vessels, and discovery.',
+    detail: 'The project includes distinct underwater ecosystems, weather and time of day, a collection journal, aquarium customization, and Firebase-backed captain accounts and cloud saves.',
+    tags: ['JavaScript', 'HTML5 Canvas', 'Web Audio', 'Firebase'], color: 'seafoam',
+    url: 'https://starlight-fishing.web.app', linkLabel: 'Play Starlight Fishing',
+  },
+  {
+    id: 'seas', artwork: '/assets/artwork/seven-seas-screenshot.webp', number: '06', title: 'Seven Seas', group: 'worlds', category: 'CREATURE-COLLECTING RPG · DESKTOP',
+    imageAlt: 'Seven Seas title screen with its crown, mythical sea creatures, and Click to Begin Journey prompt',
+    imageType: 'screenshot', imageWidth: 1920, imageHeight: 1080,
+    short: 'An underwater world of creatures, choices, and discovery.',
+    description: 'A Python and Pygame underwater RPG combining mythical creature collection, turn-based battles, exploration, and interconnected economy systems.',
+    problem: 'A creature-collection RPG needs exploration, combat, progression, and economy to work together while keeping every decision readable.',
+    approach: 'Python and Pygame power the game loop and interface, with OpenCV supporting cinematic sequences and modular systems for encounters, equipment, and persistent saves.',
+    detail: 'This development project connects an underwater fantasy setting, collectible creatures, a story-driven hub, arena battles, shops, and minigames. Explore the source and project documentation on GitHub.',
+    tags: ['Python', 'Pygame', 'OpenCV', 'RPG systems'], color: 'ocean',
+    url: 'https://github.com/evanbartkowski/Seven-Seas-Game', linkLabel: 'View Seven Seas on GitHub',
+  },
 ];
+
+// Plain public facts keep the terminal useful on every document.
+// Technologies and methods evidenced by work, coursework, or the listed projects.
+// The build renders these as individual, accessible lists on Experience.
+export const skillGroups = [
+  {
+    title: 'Security engineering', icon: 'security',
+    context: 'Detection, visibility, and defensive controls in enterprise environments.',
+    items: ['SIEM integration', 'EDR deployment', 'Security log analysis', 'Vulnerability assessment', 'Firewall tuning', 'IDS tuning', 'Honeypot configuration', 'Security workflow automation', 'Client onboarding', 'Platform configuration'],
+    sourceLabel: 'CyberMaxx', sourceHref: '/experience.html#background',
+  },
+  {
+    title: 'Security platforms & cloud', icon: 'security',
+    context: 'Security platforms used at work, plus Google Cloud architecture certification.',
+    items: ['SentinelOne', 'CrowdStrike', 'Elastic', 'Devo', 'LevelBlue', 'OSSIM', 'Greenbone', 'Canary', 'FortiGate', 'Google Cloud'],
+    sourceLabel: 'CyberMaxx · Cloud Architect credential', sourceHref: '/experience.html#background',
+  },
+  {
+    title: 'Programming languages', icon: 'systems',
+    context: 'Languages used across systems, research, applications, and games.',
+    items: ['Python', 'C', 'C++', 'Java', 'R', 'x86 assembly', 'JavaScript', 'TypeScript'],
+    sourceLabel: 'Résumé & project stack', sourceHref: '/assets/Evan-Bartkowski-Resume.pdf',
+  },
+  {
+    title: 'Linux & systems', icon: 'systems',
+    context: 'Operating-system interfaces, concurrency, and filesystem implementation.',
+    items: ['Linux', 'Shell implementation', 'POSIX threads', 'Thread synchronization', 'Priority scheduling', 'FUSE filesystems', 'Kernel-module integration'],
+    sourceLabel: 'Linux systems project', sourceHref: 'https://github.com/evanbartkowski/Basic-Linux-Kernel',
+  },
+  {
+    title: 'AI & machine learning', icon: 'intelligence',
+    context: 'AI / ML coursework, team research, and AI4ALL applied learning.',
+    items: ['TensorFlow', 'PyTorch', 'Neural networks', 'Convolutional neural networks', 'Adversarial neural networks', 'Random forests', 'Natural language processing', 'Domain adaptation', 'Metadata models', 'Relational graph models'],
+    sourceLabel: 'University of Maryland, Baltimore County · AI4ALL Ignite', sourceHref: '/experience.html#education',
+  },
+  {
+    title: 'Web applications', icon: 'development',
+    context: 'Interactive application interfaces, hosted services, and browser state.',
+    items: ['React', 'Flask', 'Firebase', 'HTML', 'CSS', 'Responsive interfaces', 'Authentication', 'Cloud saves', 'Browser storage', 'UI state management'],
+    sourceLabel: 'MMA Cipher · JinxKiss · Starlight Fishing', sourceHref: '/projects.html',
+  },
+  {
+    title: 'Graphics & game systems', icon: 'development',
+    context: 'Real-time graphics, environmental audio, and interconnected game mechanics.',
+    items: ['Three.js', 'HTML5 Canvas', 'Web Audio', 'Pygame', 'OpenCV', 'Camera systems', 'Enemy simulation', 'Run-based progression', 'Collection systems'],
+    sourceLabel: 'DREADRAIL · Seven Seas · Starlight Fishing', sourceHref: '/projects.html',
+  },
+  {
+    title: 'Desktop & application state', icon: 'systems',
+    context: 'Native interfaces, simulation logic, and durable application data.',
+    items: ['Tkinter', 'Native desktop interfaces', 'Save / load systems', 'Persistent state', 'Save slots', 'Simulation logic', 'World maps', 'Windows packaging'],
+    sourceLabel: 'Small Hours · Seven Seas', sourceHref: '/projects.html',
+  },
+];
+
+export const portfolioNotes = {
+  "about": "About me\nI'm Evan Bartkowski. I integrate security platforms and build software systems.\nAt CyberMaxx, I integrate SIEM, EDR, and network security platforms, tune defensive controls, and automate security workflows across client environments.\nI earned my computer science bachelor's at the University of Maryland, Baltimore County in May 2025, with an Artificial Intelligence / Machine Learning focus. Its Carnegie R1 research environment shaped my work across intelligent systems, Linux programming, and collaborative research.\nI'm pursuing a Master of Science in Cybersecurity, Information Security track, at the Georgia Institute of Technology, expected December 2028. The program's technical focus spans cryptography, secure systems, network defense, and applied security practice.\nMy independent work spans Linux systems programming, reverse engineering, AI experiments, web applications, and interactive worlds.",
+  "experience": "Experience\nCURRENT ROLE / CYBERSECURITY OPERATIONS\nCyberMaxx\nCybersecurity Operations\nImplementation Engineer\nAUG 2025 — PRESENT / FULL-TIME / HYBRID\nWashington DC–Baltimore Area\nI deploy, configure, and integrate enterprise SIEM, EDR, and network security platforms across client environments.\nI assess vulnerabilities, analyze security logs, tune firewall and IDS controls, configure honeypots, and automate implementation and onboarding workflows.\nSentinelOne · CrowdStrike · Elastic · Devo · LevelBlue · OSSIM · Greenbone · Canary · FortiGate\nMore on LinkedIn ↗Résumé PDF ↓\nPROFESSIONAL CERTIFICATIONS / ISSUED\n◇Professional Cloud ArchitectGoogle\n2025\n◇CySA+CompTIA · CS0-003\n2025\n◇Security Analytics ProfessionalCompTIA · CSAP\n2025\n◇Security+CompTIA · SY0-701View certificate ↗\n2025\n◇Network+CompTIA\n2025\nGRADUATE STUDIES / IN PROGRESS\nGeorgia Institute of Technology\nMaster of Science in Cybersecurity\nInformation Security track\nExpected December 2028\nAdvancing my security engineering foundation through Georgia Institute of Technology's Information Security track while implementing enterprise defenses at CyberMaxx.\nProgram curriculum: 32 credits including a five-credit applied cybersecurity practicum; applied cryptography, secure computer systems, network security, and security labs.\nNational recognition: Top 5 online cybersecurity master's programs in the U.S.; ranked #2 by MastersInAI.org, 2026.\nProgram source: https://catalog.gatech.edu/programs/cybersecurity-ms/\nRanking source: https://www.mastersinai.org/degrees/online-masters-in-cybersecurity/\nUNDERGRADUATE / COMPLETED\nUniversity of Maryland, Baltimore County\nBachelor of Science in Computer Science\nArtificial Intelligence / Machine Learning track\nGraduated May 2025\nCarnegie R1 public research university recognized for innovation, undergraduate teaching, and collaborative STEM research.\nRanked #3 for computer science in Maryland by Niche, 2027 Best Colleges.\nCore coursework: algorithms, operating systems, computer security, and software engineering.\nAI / ML studies: neural networks, metadata models, graph models, and domain adaptation.\nApplied work: C shell, POSIX threads, priority scheduling, FUSE filesystem, kernel-module integration, and team social-bot detection research across Twitter and Reddit.\nAcademic recognition: Dean's List, Fall 2024.\nRanking source: https://www.niche.com/colleges/search/best-colleges-for-computer-science/s/maryland/\nUniversity source: https://research.umbc.edu/fast-facts/\nEarlier job experience 04 ROLES\nAUG 2025 — PRESENT\nEvents & Conference Services C1 Contractor\nUniversity of Maryland, Baltimore County · Part-time\nDesign audio, video, and lighting systems for campus events; coordinate technical production and mentor student staff.\nAUG 2024 — JUN 2025\nEvents & Conference Services Lighting Student Manager\nUniversity of Maryland, Baltimore County\nLed 30+ staff and designed large-scale lighting, audio, and video networks for campus events.\nJAN 2024 — AUG 2024\nEvents & Conference Services Technician\nUniversity of Maryland, Baltimore County\nConfigured and operated audio, video, and lighting equipment for large-scale campus productions.\nMAY 2023 — AUG 2023\nNature Specialist\nWard YMCA\nDesigned and taught ecology, wildlife, and conservation lessons for 200+ children.\nCollege projects 02 PROJECTS\nSYSTEMS PROJECT ↗Linux systems programming\nSystems coursework in C: shell implementation, synchronized priority scheduling, and a FUSE filesystem with Linux kernel-module integration.\nC / LINUX / POSIX THREADS / FUSE\nTEAM RESEARCH ↗Social bot detection\nTeam research on social-bot detection across Twitter and Reddit using metadata neural networks, relational graph models, and domain adaptation.\nPYTHON / TENSORFLOW / PYTORCH\nPrograms / Other\nAPPLIED LEARNING / 18 WEEKSAI4ALL Ignite\nExplore the document archive ↓\nCompleted 18 weeks of applied machine learning covering random forests, convolutional and adversarial neural networks, and an industry-mentored NLP project. Completed September 8, 2024.",
+  "certs": "◇Professional Cloud ArchitectGoogle · 2025 · View certificate ↗\n◇CySA+CompTIA · CS0-003 · 2025 · View certificate ↗\n◇Security Analytics ProfessionalCompTIA · CSAP · 2025 · View credential ↗\n◇Security+CompTIA · SY0-701 · 2025 · View certificate ↗\n◇Network+CompTIA · N10-009 · 2025 · View certificate ↗",
+  "skills": skillGroups.map(group => group.title + '\n' + group.context + '\n' + group.items.map(item => '• ' + item).join('\n') + '\nApplied in: ' + group.sourceLabel).join('\n\n')
+};

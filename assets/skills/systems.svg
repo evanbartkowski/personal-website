@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240" fill="none">
+  <title>Isometric engineering workstation with a server and mechanical parts</title>
+  <defs>
+    <linearGradient id="systems-metal" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#c1c6b4"/><stop offset=".3" stop-color="#7c8a72"/><stop offset="1" stop-color="#273b29"/></linearGradient>
+    <linearGradient id="systems-frame" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#526449"/><stop offset="1" stop-color="#15261a"/></linearGradient>
+    <linearGradient id="systems-screen" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#173322"/><stop offset="1" stop-color="#040d09"/></linearGradient>
+    <linearGradient id="systems-gold" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#b6a16c"/><stop offset="1" stop-color="#615638"/></linearGradient>
+    <radialGradient id="systems-floor"><stop stop-color="#4d7638" stop-opacity=".19"/><stop offset="1" stop-color="#233d24" stop-opacity="0"/></radialGradient>
+    <filter id="systems-shadow" x="-25%" y="-100%" width="150%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <ellipse cx="159" cy="203" rx="140" ry="30" fill="url(#systems-floor)"/>
+  <ellipse cx="157" cy="203" rx="110" ry="13" fill="#000" opacity=".65" filter="url(#systems-shadow)"/>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="m32 170 119-52 143 54-119 51Z" fill="#0d180f" stroke="#2a402a"/>
+    <path d="m32 170 143 53v6L32 176Z" fill="#17251a"/><path d="m175 223 119-51v6l-119 51Z" fill="#1d2f1f"/>
+    <g stroke="#3a5031" stroke-width="1"><path d="m49 171 125 46 99-43M64 176l15-6m177 15-18-7m-57 29-25-9m-24-62 17 6"/></g>
+    <path d="M155 163q25-12 38 1t29 9q12-6-4-14" stroke="#0a100a" stroke-width="5"/>
+    <path d="M155 161q25-12 38 1t29 9q12-6-4-14" stroke="#8f8055" stroke-width="2.2"/>
+    <g transform="translate(60 126)"><path d="m-8-29 13-2 3 9 9 4 9-4 7 11-7 7v10l7 6-6 11-10-3-9 5-2 9-13 1-4-9-9-4-9 4-7-12 7-6-1-10-7-6 6-12 10 3 9-5Z" fill="url(#systems-metal)" stroke="#46573b"/><circle r="18" fill="#17271a" stroke="#8b9478" stroke-width="1.5"/><circle r="9" fill="#394c30" stroke="#a39160" stroke-width="3"/><circle r="3" fill="#0a150d"/></g>
+    <path d="m201 77 38-16 39 16-38 17Z" fill="url(#systems-metal)" stroke="#9ba38b" stroke-width=".6"/>
+    <path d="m201 77 39 17v91l-39-17Z" fill="url(#systems-frame)" stroke="#516248" stroke-width=".8"/>
+    <path d="m240 94 38-17v92l-38 16Z" fill="#112318" stroke="#3d5137" stroke-width=".8"/>
+    <path d="m207 89 26 11v22l-26-11Z" fill="#0b160e" stroke="#7c8569" stroke-width=".8"/>
+    <path d="m207 117 26 11v22l-26-11Z" fill="#0a140d" stroke="#6d795f" stroke-width=".8"/>
+    <path d="m207 145 26 11v18l-26-11Z" fill="#0a140d" stroke="#5b6c51" stroke-width=".8"/>
+    <g stroke="#91b975" stroke-width="1.8"><path d="m212 97 13 5m-13 0 13 5m-13 22 13 5m-13 0 13 5m-13 21 13 5"/></g>
+    <g fill="#9ccc6b"><circle cx="229" cy="112" r="1.5"/><circle cx="229" cy="139" r="1.5"/><circle cx="229" cy="166" r="1.5"/></g>
+    <g stroke="#4f6a43" stroke-width="1"><path d="m249 107 20-9m-20 15 20-9m-20 15 20-9m-20 15 20-9m-20 15 20-9m-20 15 20-9m-20 15 20-9m-20 15 20-9"/></g>
+    <path d="m72 58 11-4 98 37-11 6Z" fill="url(#systems-metal)"/>
+    <path d="m170 97 11-6v74l-11 7Z" fill="#18281b" stroke="#69785c" stroke-width=".7"/>
+    <path d="m72 58 98 39v75l-98-39Z" fill="url(#systems-frame)" stroke="#8a977b" stroke-width="1.3"/>
+    <path d="m80 71 82 32v56l-82-32Z" fill="url(#systems-screen)" stroke="#0a130b" stroke-width="2"/>
+    <path d="m82 74 77 30" stroke="#a6bc8b" stroke-opacity=".22"/>
+    <g transform="translate(88 84) skewY(21)"><path d="m0 0 5 4-5 4m10 0h8" stroke="#a3d477" stroke-width="1.5"/><path d="M0 17h15m4 0h34M0 24h30m5 0h23M0 31h10m5 0h29" stroke="#77a259" stroke-width="1.6"/><path d="M36 17h17M0 31h10" stroke="#b3a271" stroke-width="1.6"/></g>
+    <path d="m113 149 16 6v23l-16-6Z" fill="url(#systems-metal)"/><path d="m129 155 6-3v23l-6 3Z" fill="#273c29"/>
+    <path d="m95 178 25-11 31 12-25 11Z" fill="url(#systems-metal)" stroke="#526547"/><path d="m95 178 31 12v4l-31-12Zm31 12 25-11v4l-25 11Z" fill="#243725"/>
+    <path d="m49 166 40-17 53 20-40 18Z" fill="#0a150d" stroke="#5e7252"/>
+    <path d="m49 166 53 21v4l-53-21m53 17 40-18v4l-40 18Z" fill="#283d29"/>
+    <g stroke="#80916c" stroke-width="1.5"><path d="m60 166 29-12m-20 16 29-12m-20 16 29-12m-20 16 29-12m-20 16 29-12m-20 16 29-12"/><path d="m65 161 50 19m-42-23 50 19"/></g>
+    <path d="m157 192 13-6 12 5-13 7Z" fill="url(#systems-gold)"/><path d="m157 192 12 6v5l-12-5m12 0 13-7v5l-13 7Z" fill="#3d452b"/>
+    <path d="m169 188 5 2" stroke="#d0c292"/>
+  </g>
+</svg>

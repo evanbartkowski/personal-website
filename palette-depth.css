@@ -1,0 +1,52 @@
+/* Related shades give each chosen color a clear hierarchy over the black sky. */
+body {
+  --tone-heading: color-mix(in srgb, var(--cream) 78%, #f1f4fb);
+  --tone-copy: color-mix(in srgb, var(--cream) 78%, #c2cbd8);
+  --tone-cool: color-mix(in srgb, var(--cream) 76%, #98bfdf);
+  --tone-warm: color-mix(in srgb, var(--cream) 80%, #ddc1a1);
+}
+main :is(h1, h2),
+body[data-page="home"] .hero h1,
+.about-copy .about-lead,
+.education-record h3,
+.project-title-row h3,
+.skill-domain h3 {
+  color: var(--tone-heading);
+}
+body[data-page="home"] .hero-description,
+.about-copy > p:not(.about-lead),
+.education-record .education-detail,
+.education-highlights li > span,
+.project-content > p,
+.skill-domain-context,
+.blog-card > p,
+.blog-article-body > p {
+  color: var(--tone-copy);
+}
+.hero-welcome,
+main .eyebrow,
+main .record-label,
+.project-category,
+.education-highlights strong,
+.skill-evidence,
+.project-tags > span:nth-child(3n + 2),
+.skill-list > li:nth-child(3n + 2) {
+  color: var(--tone-cool);
+}
+.education-date,
+.timeline-date,
+.project-tags > span:nth-child(3n),
+.skill-list > li:nth-child(3n) {
+  color: var(--tone-warm);
+}
+.education-links .text-link,
+.project-content > .text-link,
+.about-links .text-link {
+  color: var(--tone-cool);
+  text-decoration-color: color-mix(in srgb, var(--green) 35%, transparent);
+}
+.education-links .text-link:hover,
+.project-content > .text-link:hover,
+.about-links .text-link:hover {
+  color: var(--tone-heading);
+}

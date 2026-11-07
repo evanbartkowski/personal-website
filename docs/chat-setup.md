@@ -1,0 +1,20 @@
+# Portfolio chat
+
+The local server exposes `GET /api/chat/status` and `POST /api/chat`. Messages stay in the visitor's current browser session; this server does not write chat transcripts to disk. Requests use the stateless Gemini `generateContent` API without saved conversations or explicit caches. Google's separate service data policies apply; free-tier inputs and outputs may be used to improve Google's products.
+
+Create a private `.env.local` in the project root using `.env.example` as a template. Set `GEMINI_API_KEY` to a Google AI Studio key and optionally choose an available model with `GEMINI_MODEL`. Restart `npm run dev` after changing environment values. The default is stable `gemini-3.1-flash-lite`, which has a free tier subject to account/model availability and request/token quotas. Keys are passed only in the server-side `x-goog-api-key` header, never the URL. Never paste a key into `app.js`, HTML, browser storage, or a published static asset.
+
+The assistant uses the public portfolio profile, projects, supplied credential records, and documented experience. It identifies itself as an AI portfolio representative and cannot make commitments for Evan. Missing facts should be directed to Evan's public email or LinkedIn rather than invented.
+
+The server limits request size, message length, concurrency, and requests per minute. The local server accepts local same-origin requests only, listens on `127.0.0.1`, and serves static files exclusively from `dist/`. Keys and server modules are outside that directory. If no key is configured, status reports `available: false` and messages return an explicit `503 not_configured`; there are no canned responses pretending to be AI.
+
+Run backend checks with `node --test scripts/test-chat.mjs`. Provider success and error paths use a stubbed HTTP provider; those tests do not spend tokens or verify a live account.
+
+`npm run build` still creates a static export. Firebase Hosting forwards `/api/chat` and `/api/chat/**` to the Node 22 `portfolioChat` function in `us-central1`. It binds `GEMINI_API_KEY` through Secret Manager and reuses the grounded handler. The adapter accepts exactly `https://evanbartkowski.com` and the two Firebase Hosting origins (`https://personal-website-7d04c.web.app` and `https://personal-website-7d04c.firebaseapp.com`), reads the platform raw body with a 24KB limit, and enforces per-client/concurrency and best-effort per-instance generation limits. The `www` site redirects to the custom domain root. Blog editing remains local; it is never routed through the public function.
+
+Official API references: [Gemini generateContent](https://aistudio.google.com/api-reference/generate-content), [Gemini 3.1 Flash-Lite](https://aistudio.google.com/docs/models/gemini-3.1-flash-lite), [pricing and free-tier data terms](https://aistudio.google.com/docs/pricing#gemini-3.1-flash-lite), [rate limits](https://aistudio.google.com/docs/rate-limits).
+
+
+To deploy: run `npm install --prefix functions`, `npm run sync:chat-secret`, then `npm run deploy`. The secret helper reads only the project `.env.local`, suppresses SDK debug logging, and transfers the credential directly over HTTPS without temporary files. Firebase Blaze is required for the function; Gemini can use its separate free tier while quota is available. A true availability status means the key is configured; verify a real chat response to check model access and quota. Gemini quota exhaustion returns an honest `429 quota_exhausted` with a retry hint. Run `npm test` for provider-free local/cloud/secret tests.
+
+A model offering a free tier does not make every project free. A key attached to a paid or prepaid AI Studio project can require available API credits. If Gemini returns HTTP 402, chat reports `503 billing_required` without a retry hint; use a free-tier project with available quota to keep generation free, or fund the existing project if paid use is intended. The adapter does not automatically move the project between billing tiers or change billing settings.

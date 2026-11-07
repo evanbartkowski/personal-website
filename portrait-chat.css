@@ -1,0 +1,51 @@
+.portrait-launch { padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.portrait-launch:focus-visible { outline: 1px solid var(--green); outline-offset: 5px; border-radius: 8px; }
+.portrait-conversation { position: absolute; z-index: 3; inset: 0 auto auto 0; display: flex; flex-direction: column; gap: 0; margin: 0; width: 100%; height: var(--hero-stage-height); max-height: calc(100dvh - 24px); min-width: 0; min-height: 0; padding: 17px; overflow: hidden; border: 1px solid color-mix(in srgb,var(--green) 28%,transparent); border-radius: 8px; background: linear-gradient(145deg,#070b1440,#02050a80); box-shadow: 0 12px 36px #0006,inset 0 1px #c4d7ff0c; backdrop-filter: blur(.25px); -webkit-backdrop-filter: blur(.25px); text-align: left; }
+.portrait-conversation[hidden] { display: none!important; }
+.portrait-conversation > :not(#portrait-chat-messages) { flex-shrink: 0; }
+.portrait-chat-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; font: 600 19px/1.3 var(--display); color: var(--cream); }
+.portrait-chat-head button { width: 28px; height: 28px; font: 20px/1 var(--sans); color: var(--muted); background: transparent; border-radius: 3px; }
+.portrait-chat-head button:hover { color: var(--cream); background: #ffffff08; }
+.portrait-conversation button:focus-visible,.portrait-conversation textarea:focus-visible { outline: 1px solid var(--green); outline-offset: 3px; }
+.portrait-chat-disclosure { margin-top: 7px; color: var(--muted); font: 8px/1.7 var(--mono); }
+.portrait-chat-connection { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding-block: 11px; font: 8px/1.7 var(--mono); color: var(--muted); }
+.portrait-chat-connection button,.portrait-chat-retry { padding: 3px 0; color: var(--green); background: transparent; font: inherit; border-bottom: 1px solid currentColor; }
+#portrait-chat-messages { flex: 1 1 0; min-height: 0; max-height: none; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.portrait-chat-intro { padding: 5px 0 15px; font: 11px/1.8 var(--sans); color: var(--muted); }
+.portrait-message { padding: 12px 0; border-top: 1px solid color-mix(in srgb,var(--green) 14%,transparent); }
+.portrait-message-label { display: block; margin-bottom: 6px; color: var(--muted); font: 7px/1.5 var(--mono); letter-spacing: .1em; }
+.portrait-message-assistant .portrait-message-label { color: var(--green); }
+.portrait-message .message-text { white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.85 var(--mono); color: var(--cream); }
+.portrait-message-user .message-text { color: var(--muted); font-family: var(--sans); }
+.portrait-chat-pending { padding-block: 12px; color: var(--green); font: 9px/1.8 var(--mono); }
+.portrait-conversation[data-ai-state="responding"] .portrait-message-assistant:last-child .message-text::after { content: '▎'; padding-left: 2px; color: var(--green); animation: portrait-caret .85s steps(2,end) infinite; }
+#portrait-chat-form { padding-top: 13px; border-top: 1px solid var(--line); }
+#portrait-chat-form > label { display: block; margin-bottom: 7px; font: 8px/1.6 var(--mono); color: var(--muted); }
+.portrait-chat-composer { display: flex; align-items: stretch; gap: 8px; }
+#portrait-chat-input { min-width: 0; width: 100%; height: 62px; min-height: 62px; max-height: 62px; resize: none; padding: 10px; border: 1px solid var(--line); border-radius: 4px; background: #0008; color: var(--cream); font: 11px/1.7 var(--mono); }
+#portrait-chat-input::placeholder { color: var(--muted); }
+#portrait-chat-send { padding: 10px 12px; border: 1px solid color-mix(in srgb,var(--green) 42%,transparent); border-radius: 4px; background: color-mix(in srgb,var(--green) 9%,#0008); color: var(--cream); font: 9px/1.6 var(--mono); }
+#portrait-chat-send span { display: block; color: var(--green); font-size: 16px; }
+#portrait-chat-send:hover:enabled { border-color: var(--green); box-shadow: 0 0 12px color-mix(in srgb,var(--green) 12%,transparent); }
+.portrait-conversation button:disabled { opacity: .45; cursor: default; }
+.portrait-chat-error { margin-top: 9px; padding: 9px; border: 1px solid color-mix(in srgb,var(--green) 25%,transparent); border-radius: 3px; font: 9px/1.7 var(--mono); color: var(--muted); }
+.portrait-chat-error p { margin-bottom: 5px; }
+@keyframes portrait-caret { 50% { opacity: 0; } }
+@media(max-width:760px) {
+  .portrait-conversation { width: calc(200% + var(--hero-art-gap)); max-width: calc(100vw - 32px); padding: 10px 12px; }
+  .portrait-chat-head { min-height: 26px; font-size: 18px; }
+  .portrait-chat-head button { width: 28px; height: 26px; }
+  .portrait-chat-disclosure { margin-top: 2px; font-size: 8px; line-height: 1.4; }
+  .portrait-chat-connection { gap: 8px; padding-block: 4px; font-size: 8px; line-height: 1.4; }
+  .portrait-chat-connection button { padding-block: 1px; }
+  .portrait-chat-intro { padding-block: 4px 8px; }
+  .portrait-message { padding-block: 7px; }
+  .portrait-message-label { margin-bottom: 3px; }
+  .portrait-message .message-text { font-size: 11px; line-height: 1.7; }
+  #portrait-chat-form { position: relative; padding-top: 7px; }
+  #portrait-chat-form > label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  #portrait-chat-input { height: 44px; min-height: 44px; max-height: 44px; padding: 9px; font-size: 16px; line-height: 1.45; }
+  #portrait-chat-send { padding: 4px 11px; font-size: 9px; }
+  #portrait-chat-send span { font-size: 13px; line-height: 1.2; }
+}
+@media(prefers-reduced-motion:reduce) { .portrait-conversation * { animation: none!important; transition: none!important; } }

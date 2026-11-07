@@ -16,3 +16,9 @@ Font metadata was obtained from the official Google Fonts CSS API:
 https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=IBM+Plex+Mono&display=swap
 
 These typefaces are original font distributions, not modified fonts.
+
+Barlow Condensed -- normal semibold 600 and bold 700. Retrieved November 3, 2026.
+Assets: barlow-condensed-semibold.ttf, barlow-condensed-bold.ttf
+Source: https://github.com/google/fonts/tree/main/ofl/barlowcondensed
+License: SIL Open Font License 1.1; see OFL-Barlow-Condensed.txt.
+Original font distributions, unmodified.

@@ -4,3 +4,9 @@ dist/
 test-results/
 playwright-report/
 .openai/local*
+.env
+.env.*
+!.env.example
+.firebase/
+firebase-debug.log*
+functions/runtime/

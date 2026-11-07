@@ -1,0 +1,91 @@
+.lab-disclosure { border-block: 1px solid var(--line); }
+.lab-disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 27px 4px; list-style: none; cursor: pointer; }
+.lab-disclosure > summary::-webkit-details-marker { display: none; }
+.lab-disclosure > summary h2 { font: 600 clamp(28px, 2.7vw, 38px)/1.2 var(--display); letter-spacing: .005em; color: var(--cream); }
+.lab-disclosure > summary > span { display: flex; align-items: center; gap: 20px; font: 9px var(--mono); color: var(--muted); }
+.lab-disclosure .disclosure-chevron { width: 10px; height: 10px; border: solid var(--green); border-width: 0 1px 1px 0; transform: translateY(-2px) rotate(45deg); transition: transform .2s; }
+.lab-disclosure[open] .disclosure-chevron { transform: translateY(3px) rotate(225deg); }
+.lab-disclosure > summary:hover h2 { color: var(--green); }
+.lab-disclosure > summary:focus-visible { outline: 2px solid var(--green); outline-offset: 6px; }
+.lab-disclosure > summary { position: relative; justify-content: center; text-align: center; }
+.lab-disclosure > summary > span { position: absolute; right: 18px; }
+.lab-disclosure > .lab-panel { margin-bottom: 25px; }
+.lab-disclosure .lab-copy > p:first-child { margin-top: 0; }
+.terminal-dialog { isolation: isolate; overflow: hidden; }
+.terminal-dialog[open] { display: flex; flex-direction: column; height: min(700px, calc(100dvh - 48px)); }
+.terminal-sky { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.terminal-dialog > :not(.terminal-sky) { position: relative; z-index: 1; }
+.terminal-dialog > .terminal-output { flex: 1; min-height: 130px; max-height: none; background: rgba(0,0,0,.28); color: var(--cream); text-shadow: 0 1px 7px #000; }
+.terminal-dialog-head, .terminal-dialog-foot, #terminal-form { flex-shrink: 0; background: rgba(0,0,0,.62); }
+.terminal-dialog .terminal-start-menu { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 16px 0; white-space: normal; }
+.terminal-start-menu h3 { grid-column: 1/-1; font: 10px/1.5 var(--mono); color: var(--muted); letter-spacing: .07em; }
+.terminal-start-menu button { display: grid; grid-template-columns: 62px minmax(0,1fr); grid-template-areas: 'art command' 'art title' 'art controls' 'art play'; align-items: center; gap: 2px 12px; min-height: 116px; min-width: 0; border: 1px solid var(--line); border-radius: 5px; padding: 15px; background: linear-gradient(135deg,color-mix(in srgb,var(--green) 8%,#000),#000a); text-align: left; color: var(--cream); box-shadow: inset 0 0 24px #0005,0 0 16px color-mix(in srgb,var(--green) 7%,transparent); transition: border-color .2s,box-shadow .2s; }
+.terminal-start-menu button:hover,.terminal-start-menu button:focus-visible { border-color: var(--green); box-shadow: 0 0 22px color-mix(in srgb,var(--green) 23%,transparent); }
+.terminal-start-menu button:focus-visible { outline: 1px solid var(--cream); outline-offset: 4px; }
+.terminal-start-menu svg { grid-area: art; width: 62px; height: 45px; stroke: var(--green); stroke-width: 1.3; filter: drop-shadow(0 0 5px color-mix(in srgb,var(--green) 60%,transparent)); }
+.terminal-start-menu code { grid-area: command; font: 9px/1.5 var(--mono); color: var(--muted); }
+.terminal-start-menu strong { grid-area: title; font: 600 23px/1.2 var(--display); letter-spacing: .01em; }
+.terminal-start-menu small { grid-area: controls; font: 8px/1.7 var(--mono); color: var(--muted); }
+.terminal-game-play { grid-area: play; padding-top: 5px; font: 9px/1.5 var(--mono); color: var(--cream); }
+@media(max-width:520px) {
+  .terminal-dialog .terminal-start-menu { gap: 10px; }
+  .terminal-start-menu button { grid-template-columns: minmax(0,1fr); grid-template-areas: 'art' 'command' 'title' 'controls' 'play'; padding: 12px 10px; gap: 4px; }
+  .terminal-start-menu svg { width: 46px; height: 30px; }
+  .terminal-start-menu strong { font-size: 20px; }
+  .terminal-start-menu small { font-size: 7px; }
+}
+@media(prefers-reduced-motion:reduce) { .terminal-start-menu button { transition: none; } }
+.terminal-game-panel { white-space: normal; border: 1px solid var(--line); padding: 16px; margin: 14px auto; background: linear-gradient(145deg, color-mix(in srgb, var(--green) 7%, #050712), #03040bd9); border-radius: 8px; box-shadow: 0 0 22px color-mix(in srgb, var(--green) 7%, transparent); width: 100%; max-width: 500px; }
+.arcade-top, .arcade-hud { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.arcade-top { padding-bottom: 12px; }
+.arcade-label { font: 8px/1.5 var(--mono); letter-spacing: .16em; color: var(--muted); }
+.arcade-tabs { display: flex; gap: 5px; }
+.arcade-tabs button { font: 9px/1.5 var(--mono); color: var(--muted); border: 1px solid transparent; border-radius: 20px; padding: 5px 10px; min-height: 32px; background: #ffffff05; }
+.arcade-tabs button[aria-pressed="true"] { color: var(--cream); border-color: var(--line); background: color-mix(in srgb, var(--green) 12%, #060a12); }
+.arcade-hud { padding: 2px 0 9px; flex-wrap: wrap; gap: 4px 12px; }
+.arcade-title { font: 500 15px/1.4 var(--display); color: var(--cream); }
+.arcade-score { font: 9px/1.5 var(--mono); color: var(--cream); font-variant-numeric: tabular-nums; }
+.arcade-record { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 8px 10px; margin: 0 0 10px; border: 1px solid color-mix(in srgb, var(--green) 22%, transparent); border-radius: 4px; background: color-mix(in srgb, var(--green) 5%, transparent); }
+.arcade-record[hidden],.arcade-record-status[hidden] { display: none; }
+.arcade-record > span { font: 8px/1.5 var(--mono); letter-spacing: .1em; color: var(--muted); }
+.arcade-record > strong { font: 600 19px/1 var(--display); color: var(--cream); font-variant-numeric: tabular-nums; text-shadow: 0 0 10px color-mix(in srgb, var(--green) 28%, transparent); }
+.terminal-game-panel .arcade-record-status { font: 9px/1.6 var(--mono); color: var(--muted); margin: -2px 0 9px; letter-spacing: 0; }
+.arcade-record-status:empty { display: none; }
+.arcade-arena { position: relative; overflow: hidden; border: 1px solid color-mix(in srgb, var(--green) 38%, #182539); border-radius: 5px; background: #030611; }
+.terminal-game-canvas { display: block; width: 100%; aspect-ratio: 16/9; height: auto; outline-offset: -3px; touch-action: none; }
+.terminal-game-canvas:focus-visible { outline: 1px solid var(--cream); }
+.arcade-overlay { position: absolute; inset: 0; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 10px; background: linear-gradient(0deg, #02040be6, #0307149c); backdrop-filter: blur(2px); }
+.arcade-overlay[hidden] { display: none; }
+.arcade-overlay strong { font: 500 clamp(16px, 2vw, 24px)/1.3 var(--display); color: var(--cream); text-wrap: balance; }
+.arcade-overlay > span { font: 10px/1.5 var(--mono); color: #a2b4c9; }
+.arcade-overlay button { padding: 10px 20px; min-height: 40px; margin-top: 4px; font: 10px/1.5 var(--mono); color: var(--cream); border: 1px solid var(--green); border-radius: 4px; background: color-mix(in srgb, var(--green) 15%, #050a12); box-shadow: 0 0 18px color-mix(in srgb, var(--green) 16%, transparent); }
+.terminal-game-panel .arcade-instructions { font: 10px/1.7 var(--mono); color: var(--muted); margin: 10px 0 0; letter-spacing: 0; }
+.terminal-game-controls { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.terminal-game-controls button { font: 10px/1.5 var(--mono); padding: 7px 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--green) 6%, #000); color: var(--cream); border-radius: 4px; min-width: 38px; min-height: 38px; touch-action: none; }
+.terminal-game-controls button[hidden] { display: none; }
+.terminal-game-controls button span { color: var(--muted); font-size: 8px; margin-left: 5px; }
+.terminal-game-controls button:disabled { opacity: .4; cursor: default; }
+.terminal-game-controls button:hover:not(:disabled), .terminal-game-controls button:focus-visible, .arcade-tabs button:hover, .arcade-overlay button:hover { color: var(--green); border-color: var(--green); }
+.terminal-shortcuts { color: var(--muted); font-size: 10px; }
+@media(max-width: 760px) {
+  .lab-disclosure > summary { padding-block: 23px; }
+  .lab-disclosure > summary > span { font-size: 8px; gap: 12px; }
+  .lab-disclosure .lab-summary-hint { display: none; }
+  .terminal-dialog[open] { height: min(700px, calc(100dvh - 28px)); max-height: calc(100dvh - 28px); }
+  .terminal-game-panel { padding: 11px 8px; }
+  .arcade-top { gap: 5px; padding-bottom: 8px; }
+  .arcade-label { font-size: 7px; letter-spacing: .07em; }
+  .arcade-tabs button { font-size: 8px; padding: 4px 7px; }
+  .arcade-title { font-size: 12px; }
+  .arcade-score { font-size: 8px; }
+  .arcade-record { padding: 7px 8px; }
+  .arcade-record > span { font-size: 7px; }
+  .arcade-record > strong { font-size: 17px; }
+  .terminal-game-panel .arcade-record-status { font-size: 8px; }
+  .arcade-overlay { gap: 5px; padding: 9px; }
+  .arcade-overlay strong { font-size: 15px; }
+  .arcade-overlay > span { font-size: 8px; }
+  .arcade-overlay button { padding: 7px 12px; min-height: 34px; font-size: 9px; }
+  .terminal-game-panel .arcade-instructions { font-size: 9px; }
+}
+@media(prefers-reduced-motion: reduce) { .lab-disclosure .disclosure-chevron { transition: none; } }

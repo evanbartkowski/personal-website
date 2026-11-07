@@ -1,0 +1,128 @@
+/* Slim collector-like edge lights extend the home cards across the content. */
+body :is(.professional-record, .credential-panel, .education-record, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure) {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--green) 27%, transparent);
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .68);
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, .24), 0 0 16px color-mix(in srgb, var(--green) 6%, transparent);
+  --panel-trace-h: linear-gradient(90deg, transparent 13%, var(--green) 29%, color-mix(in srgb, var(--green) 76%, white) 40%, var(--green) 48%, transparent 65%);
+  --panel-trace-v: linear-gradient(0deg, transparent 16%, var(--green) 32%, color-mix(in srgb, var(--green) 76%, white) 43%, var(--green) 51%, transparent 67%);
+  transition: border-color .25s, box-shadow .25s, opacity .5s ease, transform .35s ease;
+}
+.education-grid > .education-record,
+#toolkit .skill-domain { background-color: rgba(0, 0, 0, .68); }
+
+/* Dialogs keep their own visual layers and receive only a quiet outer halo. */
+body dialog[open] { box-shadow: 0 24px 100px rgba(0, 0, 0, .68), 0 0 20px color-mix(in srgb, var(--ui-accent, var(--green)) 13%, transparent); }
+
+/* Paint only the perimeter. Content, imagery, and hit targets remain untouched. */
+body :is(.professional-record, .credential-panel, .education-record, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure)::after,
+body :is(.professional-record, .credential-panel, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure)::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  z-index: 2;
+  pointer-events: none;
+  background-image: var(--panel-trace-h), var(--panel-trace-v), var(--panel-trace-h), var(--panel-trace-v);
+  background-size: 220% 1px, 1px 220%, 220% 1px, 1px 220%;
+  background-repeat: no-repeat;
+  background-position: 18% 0, 100% 35%, 82% 100%, 0 65%;
+  opacity: .63;
+  color: transparent;
+  filter: saturate(1.25) brightness(1.15) drop-shadow(0 0 3px color-mix(in srgb, var(--green) 67%, transparent));
+  animation: panel-edge-drift 21s ease-in-out infinite alternate paused;
+  transition: opacity .25s;
+}
+body :is(.professional-record, .credential-panel, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure)::before {
+  background-position: 75% 0, 100% 85%, 25% 100%, 0 15%;
+  filter: hue-rotate(135deg) saturate(1.3) brightness(1.2) drop-shadow(0 0 4px color-mix(in srgb, var(--green) 63%, transparent));
+  opacity: .4;
+  animation-name: panel-edge-return;
+  animation-duration: 27s;
+  animation-delay: -9s;
+}
+
+/* Just the two lead experience panels move continuously; secondary lights
+   travel during interaction, keeping the rest of the page quiet and smooth. */
+body :is(.professional-record, .credential-panel)::after { animation-play-state: running; }
+body :is(.professional-record, .credential-panel, .education-record, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure):is(:hover, :focus-within) {
+  border-color: color-mix(in srgb, var(--green) 63%, var(--cream));
+  box-shadow: inset 0 0 24px color-mix(in srgb, var(--green) 3%, transparent), 0 0 23px color-mix(in srgb, var(--green) 12%, transparent);
+}
+body :is(.professional-record, .credential-panel, .education-record, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure):is(:hover, :focus-within)::after,
+body :is(.professional-record, .credential-panel, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure):is(:hover, :focus-within)::before {
+  animation-play-state: running;
+  opacity: .9;
+}
+body :is(.research-link, .about-fact, .project-card, .document-card, .blog-card):focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.about-fact { padding-inline: 20px; }
+.about-fact > div { min-width: 0; }
+.about-fact .record-label { display: block; white-space: normal; overflow-wrap: normal; line-height: 1.65; }
+.education-record h3 { max-width: 100%; overflow-wrap: normal; word-break: normal; }
+body :is(.experience-history, .school-projects) > summary { padding-inline: 29px 15px; }
+body :is(.experience-history, .school-projects) > summary::before { left: 10px; }
+.lab-disclosure > summary { padding-inline: 18px; }
+
+.programs-disclosure { margin-top: 13px; }
+.programs-disclosure > summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 60px;
+  padding: 16px 15px 16px 29px;
+  list-style: none;
+  font: 600 26px/1.2 var(--display);
+  color: var(--cream);
+  cursor: pointer;
+}
+.programs-disclosure > summary::-webkit-details-marker { display: none; }
+.programs-disclosure > summary::before {
+  content: '+';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--green);
+  font: 17px/1 var(--mono);
+}
+.programs-disclosure[open] > summary::before { content: '\2212'; }
+.programs-disclosure > summary:hover { color: var(--green); background: color-mix(in srgb, var(--green) 3%, transparent); }
+.programs-disclosure > summary:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.programs-disclosure > summary > .mono { color: var(--muted); font: 8px/1.5 var(--mono); white-space: nowrap; }
+.programs-disclosure .training-record { margin: 0 15px 15px; }
+
+@keyframes panel-edge-drift {
+  from { background-position: 0% 0, 100% 0%, 100% 100%, 0 100%; }
+  to { background-position: 100% 0, 100% 100%, 0% 100%, 0 0%; }
+}
+@keyframes panel-edge-return {
+  from { background-position: 100% 0, 100% 100%, 0% 100%, 0 0%; }
+  to { background-position: 0% 0, 100% 0%, 100% 100%, 0 100%; }
+}
+@media (max-width: 760px) {
+  .about-fact { padding-inline: 15px; }
+  .programs-disclosure > summary { font-size: 24px; gap: 12px; }
+  .programs-disclosure > summary > .mono { font-size: 7px; }
+  .programs-disclosure .training-record { margin-inline: 12px; margin-bottom: 12px; }
+}
+@media (max-width: 440px) {
+  .programs-disclosure > summary,
+  body :is(.experience-history, .school-projects) > summary { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body :is(.professional-record, .credential-panel, .education-record, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure),
+  body :is(.professional-record, .credential-panel, .education-record, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure)::after,
+  body :is(.professional-record, .credential-panel, .training-record, .research-link, .skill-domain, .about-fact, .project-card, .document-card, .blog-card, .blog-empty, .lab-panel, .skills-disclosure, .lab-disclosure, .experience-history, .school-projects, .programs-disclosure)::before {
+    animation: none;
+    transition: none;
+  }
+}

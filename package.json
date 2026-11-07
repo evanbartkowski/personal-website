@@ -6,8 +6,33 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/serve.mjs",
-    "preview": "node scripts/serve.mjs"
+    "preview": "node scripts/serve.mjs",
+    "test": "node --test scripts/test-chat.mjs scripts/test-blog.mjs scripts/test-virtual-shell.mjs scripts/test-audio.mjs scripts/test-cloud-chat.mjs scripts/test-sync-chat-secret.mjs scripts/test-terminal-game.mjs scripts/test-visitors.mjs scripts/test-version-assets.mjs scripts/test-music-player.mjs scripts/test-spacecraft-passage.mjs scripts/test-arcade-scores.mjs scripts/test-cyber-challenge.mjs",
+    "test:browser": "node scripts/qa.mjs && node scripts/qa-credentials.mjs && node scripts/qa-interactions.mjs && node scripts/qa-blog.mjs && node scripts/qa-settings.mjs && node scripts/qa-navigation.mjs && node scripts/qa-motion.mjs && node scripts/qa-reactor.mjs && node scripts/qa-terminal-experience.mjs && node scripts/qa-visitors.mjs && node scripts/qa-project-screenshots.mjs && node scripts/qa-palette-depth.mjs && node scripts/qa-transparent-chrome.mjs && node scripts/qa-music-crossfade.mjs && node scripts/qa-portrait.mjs && node scripts/qa-arcade-records.mjs && node scripts/qa-portrait-chat.mjs && node scripts/qa-cyber-challenge.mjs && node scripts/qa-avatar-response.mjs",
+    "test:motion": "node scripts/qa-motion.mjs",
+    "deploy": "firebase deploy --only \"functions,hosting\" --project personal-website-7d04c",
+    "test:reactor": "node scripts/qa-reactor.mjs",
+    "prepare:functions": "node scripts/prepare-functions.mjs",
+    "sync:chat-secret": "node scripts/sync-chat-secret.mjs",
+    "test:seo": "node scripts/qa-seo.mjs",
+    "search:submit": "node scripts/submit-indexnow.mjs",
+    "assets:brand": "node scripts/generate-brand-assets.mjs",
+    "test:terminal": "node scripts/qa-terminal-experience.mjs",
+    "test:visitors": "node --test scripts/test-visitors.mjs && node scripts/qa-visitors.mjs",
+    "setup:visitors": "node scripts/setup-visitors.mjs",
+    "test:projects": "node scripts/qa-project-screenshots.mjs",
+    "test:portrait": "node scripts/qa-portrait.mjs",
+    "test:polish": "node scripts/qa-palette-depth.mjs && node scripts/qa-transparent-chrome.mjs",
+    "test:music": "node --test scripts/test-music-player.mjs && node scripts/qa-music-crossfade.mjs",
+    "test:arcade-records": "node --test scripts/test-arcade-scores.mjs && node scripts/qa-arcade-records.mjs",
+    "test:portrait-chat": "node scripts/qa-portrait-chat.mjs",
+    "test:challenge": "node --test scripts/test-cyber-challenge.mjs && node scripts/qa-cyber-challenge.mjs",
+    "test:avatar-response": "node scripts/qa-avatar-response.mjs"
   },
-  "dependencies": {"three": "0.180.0"},
-  "devDependencies": {"@playwright/test": "1.56.1"}
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
 }

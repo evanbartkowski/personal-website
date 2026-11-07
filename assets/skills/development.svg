@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240" fill="none">
+  <title>Layered application windows and a small isometric software world</title>
+  <defs>
+    <linearGradient id="development-metal" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#c6cab7"/><stop offset=".35" stop-color="#7f8a70"/><stop offset="1" stop-color="#2a3f2b"/></linearGradient>
+    <linearGradient id="development-panel" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#3d5438"/><stop offset="1" stop-color="#16271b"/></linearGradient>
+    <linearGradient id="development-glass" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#142e1e"/><stop offset="1" stop-color="#050f0b"/></linearGradient>
+    <linearGradient id="development-gold" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#b5a16b"/><stop offset="1" stop-color="#5e583a"/></linearGradient>
+    <radialGradient id="development-floor"><stop stop-color="#4e7937" stop-opacity=".18"/><stop offset="1" stop-color="#233d24" stop-opacity="0"/></radialGradient>
+    <filter id="development-shadow" x="-25%" y="-100%" width="150%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <ellipse cx="163" cy="205" rx="138" ry="30" fill="url(#development-floor)"/>
+  <ellipse cx="163" cy="205" rx="107" ry="11" fill="#000" opacity=".65" filter="url(#development-shadow)"/>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="m35 176 115-51 138 52-115 48Z" fill="#0d180f" stroke="#2d422b"/>
+    <path d="m35 176 138 49v6L35 182Z" fill="#19291c"/><path d="m173 225 115-48v6l-115 48Z" fill="#223621"/>
+    <g stroke="#4c623b" stroke-width="1"><path d="m57 178 110 39 89-37m-147 17 18-8m103-7 26 10m-89 8 31-13"/></g>
+    <path d="m92 35 9-4 123 46-9 5Z" fill="url(#development-metal)"/>
+    <path d="m215 82 9-5v107l-9 6Z" fill="#1c3020" stroke="#566c49" stroke-width=".7"/>
+    <path d="m92 35 123 47v108l-123-47Z" fill="url(#development-panel)" stroke="#8b987c" stroke-width="1.2"/>
+    <path d="m99 45 109 41v94L99 139Z" fill="url(#development-glass)"/>
+    <path d="m99 45 109 41v13L99 58Z" fill="#58664a"/>
+    <path d="m100 45 106 40" stroke="#b0ba98" stroke-width=".7"/>
+    <g fill="#b6a16d"><ellipse cx="105" cy="53" rx="1.6" ry="1.9"/><ellipse cx="112" cy="56" rx="1.6" ry="1.9"/></g><ellipse cx="119" cy="58.5" rx="1.6" ry="1.9" fill="#91bb66"/>
+    <path d="m106 71 21 8v51l-21-8Z" fill="#15281b"/>
+    <g stroke="#6f8b56" stroke-width="1.6"><path d="m110 81 12 5m-12 2 12 5m-12 2 8 3m-8 4 12 5m-12 2 10 4"/></g>
+    <g transform="translate(136 86) skewY(21)"><path d="M0 0h12m5 0h35M0 8h8m4 0h22m4 0h14M7 16h18m4 0h13M7 24h11m4 0h30M0 32h12m5 0h27M0 40h5m4 0h39M0 48h12m5 0h28" stroke="#6f9e51" stroke-width="2"/><path d="M0 0h12M7 24h11M0 40h5" stroke="#b5a06c" stroke-width="2"/><path d="M17 0h21M12 8h22M17 48h17" stroke="#b1c993" stroke-width="1.6"/></g>
+    <path d="m52 100 8-4 91 34-8 5Z" fill="url(#development-metal)"/>
+    <path d="m143 135 8-5v68l-8 5Z" fill="#2a402a"/>
+    <path d="m52 100 91 35v68l-91-35Z" fill="url(#development-panel)" stroke="#92a17b" stroke-width="1.1"/>
+    <path d="m58 111 79 30v52l-79-30Z" fill="#0b1b12"/>
+    <path d="m59 114 76 28v7l-76-28Z" fill="#4b6340"/>
+    <path d="m62 123 71 27v39l-71-27Z" fill="url(#development-glass)"/>
+    <path d="m65 157 18-13 16 18 15-9 16 32Z" fill="#325332"/>
+    <path d="m65 157 18-13 4 17 12 1 15-9 2 21 14 11Z" fill="#648d47"/>
+    <path d="m65 157 22 4 12 1 17 12 14 11" stroke="#a2bc7a" stroke-width=".8"/>
+    <ellipse cx="118" cy="157" rx="5" ry="6" fill="#b4c58c"/>
+    <path d="M160 193q22-16 43-3l25-11" stroke="#958055" stroke-width="2"/>
+    <path d="m190 166 21-9 22 8-21 10Z" fill="url(#development-metal)"/><path d="m190 166 22 9v25l-22-9Z" fill="#365232"/><path d="m212 175 21-10v26l-21 9Z" fill="#162c1b"/>
+    <path d="m217 140 22-10 24 9-22 11Z" fill="url(#development-gold)"/><path d="m217 140 24 10v43l-24-9Z" fill="url(#development-panel)"/><path d="m241 150 22-11v44l-22 10Z" fill="#12281b"/>
+    <path d="m220 139 19-8 20 8-18 9Z" fill="#aeaa7c" opacity=".6"/>
+    <g stroke="#78935b" stroke-width="1.3"><path d="m222 151 13 5m-13 2 13 5m-13 2 13 5m-13 2 13 5m-40 0 11 4m-11 2 11 4"/></g>
+    <g fill="#9bc670"><circle cx="249" cy="171" r="1.7"/><circle cx="219" cy="188" r="1.5"/></g>
+    <path d="m164 164 9-4 10 4-9 4Z" fill="url(#development-gold)"/><path d="m164 164 10 4v10l-10-4Zm10 4 9-4v10l-9 4Z" fill="#50603b"/>
+    <path d="m174 178 10 4 12-5" stroke="#86794e" stroke-width="1.6"/>
+  </g>
+</svg>

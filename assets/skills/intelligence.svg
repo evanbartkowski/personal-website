@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240" fill="none">
+  <title>Crystalline neural core with connected nodal arrays</title>
+  <defs>
+    <linearGradient id="intelligence-metal" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#c7ccb9"/><stop offset=".4" stop-color="#75866c"/><stop offset="1" stop-color="#253d29"/></linearGradient>
+    <linearGradient id="intelligence-light" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#d2e4b5"/><stop offset=".4" stop-color="#8ec366"/><stop offset="1" stop-color="#355937"/></linearGradient>
+    <linearGradient id="intelligence-mid" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#84b264"/><stop offset="1" stop-color="#25432a"/></linearGradient>
+    <linearGradient id="intelligence-dark" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#35553a"/><stop offset="1" stop-color="#0b2015"/></linearGradient>
+    <radialGradient id="intelligence-node" cx="35%" cy="25%"><stop stop-color="#d7e9b7"/><stop offset=".3" stop-color="#88b763"/><stop offset="1" stop-color="#2b492e"/></radialGradient>
+    <radialGradient id="intelligence-floor"><stop stop-color="#527735" stop-opacity=".22"/><stop offset="1" stop-color="#233d24" stop-opacity="0"/></radialGradient>
+    <filter id="intelligence-shadow" x="-25%" y="-100%" width="150%" height="300%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <ellipse cx="160" cy="203" rx="133" ry="29" fill="url(#intelligence-floor)"/>
+  <ellipse cx="160" cy="204" rx="87" ry="11" fill="#000" opacity=".65" filter="url(#intelligence-shadow)"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="m50 181 109-47 112 44-109 46Z" fill="#0d180f" stroke="#2f452c"/>
+    <path d="m50 181 112 43v6L50 187Z" fill="#18271b"/><path d="m162 224 109-46v6l-109 46Z" fill="#233522"/>
+    <g stroke="#4c6540" stroke-width="1"><path d="m80 181 35-15 45 18 43-18 36 14m-141 8 63 23 60-25m-60 25v-15m-46-30-1-17m89 17 1-16"/></g>
+    <g stroke="#6e8153" stroke-width="1.2" opacity=".7"><path d="m55 86 31 38-27 35 44-12 17-47-65-14Zm31 38 34-24m-61 59 61-59M55 86l27-36 38 50M227 76l36 38-17 44-37-19 18-63Zm36 38-54 25m18-63-18 63m37 19 25 14-8-58m-36-38 30-24 6 62"/></g>
+    <g stroke="#b4a16c" stroke-width="1.6"><path d="M87 124h28m91 15 40 19M120 100l-2-17m89 9 20-16"/></g>
+    <g fill="url(#intelligence-node)" stroke="#95aa79" stroke-width=".7"><circle cx="55" cy="86" r="5.5"/><circle cx="82" cy="50" r="4"/><circle cx="86" cy="124" r="6.5"/><circle cx="59" cy="159" r="5"/><circle cx="103" cy="147" r="3.8"/><circle cx="227" cy="76" r="6"/><circle cx="257" cy="52" r="3.7"/><circle cx="263" cy="114" r="5.4"/><circle cx="246" cy="158" r="6.2"/><circle cx="271" cy="172" r="3.7"/></g>
+    <path d="m124 171 34-15 36 15v15l-35 16-35-14Z" fill="#182d1d" stroke="#516848"/>
+    <path d="m124 171 34-15 36 15-35 16Z" fill="url(#intelligence-metal)"/>
+    <path d="m132 171 26-11 27 11-26 12Z" fill="#243f28" stroke="#8f8359" stroke-width="2"/>
+    <path d="m141 177 18 7 17-8v10l-17 8-18-7Z" fill="#0a1a10"/>
+    <path d="m145 181 14 5 13-6" stroke="#8aba5e" stroke-width="1.7"/>
+    <path d="M133 164v-26m51 26v-29" stroke="url(#intelligence-metal)" stroke-width="5"/>
+    <path d="m112 75 46-39 48 41-6 55-42 34-42-35Z" fill="#172b1b" stroke="#758466" stroke-width="2"/>
+    <path d="m119 77 39-34 41 36-41 16Z" fill="url(#intelligence-light)"/>
+    <path d="m119 77 39 18v61l-35-29Z" fill="url(#intelligence-mid)"/>
+    <path d="m158 95 41-16-6 48-35 29Z" fill="url(#intelligence-dark)"/>
+    <path d="m158 43-14 40 14 12 16-11Z" fill="#d2e5b7" opacity=".42"/>
+    <path d="m119 77 25 6-21 44m21-44 14 73m0-61 16-11 19 43m-19-43-16 72" stroke="#b0d18d" stroke-opacity=".3" stroke-width=".9"/>
+    <path d="m158 43 1 26" stroke="#e3ebd2" stroke-width="1.6"/>
+    <path d="m125 103 8 23 17 15m17 0 15-13 8-29" stroke="#a5c180" stroke-opacity=".5"/>
+    <path d="M95 107c-18 7-21 17-7 27 22 16 74 18 117 5 31-9 48-23 41-34-4-7-15-12-30-15" stroke="#a19061" stroke-width="2.5"/>
+    <path d="M95 104c-18 7-21 17-7 27 22 16 74 18 117 5 31-9 48-23 41-34-4-7-15-12-30-15" stroke="#b7bd9c" stroke-width=".8"/>
+    <path d="M96 104q18-10 40-12m61-5 19 3" stroke="#647c52" stroke-width="1" stroke-dasharray="2 5"/>
+    <circle cx="91" cy="131" r="3.8" fill="#a6c776" stroke="#d0d4ae"/>
+    <circle cx="232" cy="119" r="3.2" fill="#8baa61" stroke="#b8bf95"/>
+    <g fill="#8ca66a"><circle cx="98" cy="188" r="1.8"/><circle cx="222" cy="186" r="1.8"/><circle cx="161" cy="211" r="1.8"/></g>
+  </g>
+</svg>
