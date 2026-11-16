@@ -38,6 +38,9 @@
 .terminal-game-panel { white-space: normal; border: 1px solid var(--line); padding: 16px; margin: 14px auto; background: linear-gradient(145deg, color-mix(in srgb, var(--green) 7%, #050712), #03040bd9); border-radius: 8px; box-shadow: 0 0 22px color-mix(in srgb, var(--green) 7%, transparent); width: 100%; max-width: 500px; }
 .arcade-top, .arcade-hud { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .arcade-top { padding-bottom: 12px; }
+.arcade-top-actions { display: flex; align-items: center; gap: 8px; }
+.arcade-fullscreen-toggle { font: 12px/1 var(--mono); color: var(--muted); border: 1px solid transparent; border-radius: 4px; padding: 5px 8px; min-height: 32px; background: #ffffff08; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: color .2s, border-color .2s; }
+.arcade-fullscreen-toggle:hover, .arcade-fullscreen-toggle[aria-pressed="true"], .terminal-game-controls button[data-arcade-action="fullscreen"][aria-pressed="true"] { color: var(--green); border-color: var(--green); background: color-mix(in srgb, var(--green) 12%, #060a12); }
 .arcade-label { font: 8px/1.5 var(--mono); letter-spacing: .16em; color: var(--muted); }
 .arcade-tabs { display: flex; gap: 5px; }
 .arcade-tabs button { font: 9px/1.5 var(--mono); color: var(--muted); border: 1px solid transparent; border-radius: 20px; padding: 5px 10px; min-height: 32px; background: #ffffff05; }
@@ -67,6 +70,45 @@
 .terminal-game-controls button:disabled { opacity: .4; cursor: default; }
 .terminal-game-controls button:hover:not(:disabled), .terminal-game-controls button:focus-visible, .arcade-tabs button:hover, .arcade-overlay button:hover { color: var(--green); border-color: var(--green); }
 .terminal-shortcuts { color: var(--muted); font-size: 10px; }
+
+/* Fullscreen mode for Flappy Orbit and Pong */
+.terminal-game-panel.arcade-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  margin: 0 !important;
+  z-index: 99999 !important;
+  background: #030611 !important;
+  padding: max(16px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+}
+.terminal-game-panel.arcade-fullscreen .arcade-arena {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: calc(100vh - 130px);
+  max-height: calc(100dvh - 130px);
+}
+.terminal-game-panel.arcade-fullscreen .terminal-game-canvas {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}
+.terminal-game-panel.arcade-fullscreen .terminal-game-controls {
+  justify-content: center;
+}
 @media(max-width: 760px) {
   .lab-disclosure > summary { padding-block: 23px; }
   .lab-disclosure > summary > span { font-size: 8px; gap: 12px; }

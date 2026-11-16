@@ -124,7 +124,7 @@ try {
       assert.match(body, /University of Maryland/);
     }
     if (expected.path === '/projects.html') {
-      assert.equal(await page.locator('.project-card').count(), 6);
+      assert.equal(await page.locator('.project-card').count(), 8);
       for (const project of projects) {
         const card = page.locator('.project-card').filter({hasText: project.title});
         assert.equal(await card.count(), 1);

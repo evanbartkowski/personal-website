@@ -161,15 +161,10 @@ try {
   await page.locator('.programs-disclosure > summary').click();
   assert.equal(await page.locator('.skill-domain').count(), 8);
   assert.ok(await page.locator('.skill-list li').count() >= 70, 'skills are individually listed with substantially broader coverage');
-  assert.equal(await page.locator('.skill-art img').count(), 8);
+  assert.equal(await page.locator('.skill-art img').count(), 0, 'skill section has image icons removed');
   assert.match(await page.locator('.education-record').first().textContent(), /IN PROGRESS[\s\S]*EXPECTED DECEMBER 2028/);
   assert.match(await page.locator('.education-record').last().textContent(), /GRADUATED MAY 2025[\s\S]*Dean's List · Fall 2024/);
   assert.equal(await page.locator('.education-links a[href="/assets/credentials/umbc-certificate.pdf"]').count(), 1, 'academic recognition links to its original document');
-  for (const art of await page.locator('.skill-art img').all()) {
-    await art.scrollIntoViewIfNeeded();
-    await art.evaluate(node => node.decode());
-    assert.ok(await art.evaluate(node => node.naturalWidth > 0), 'skill illustrations load');
-  }
   assert.equal(await page.locator('.experience-history').evaluate(node => node.open), false);
   assert.equal(await page.locator('.school-projects').evaluate(node => node.open), false);
   await page.locator('.experience-history summary').click();
@@ -193,7 +188,7 @@ try {
   await verifyDocument(page, documents[2]);
 
   await navigateTab('/projects.html');
-  assert.equal(await page.locator('.project-card').count(), 6);
+  assert.equal(await page.locator('.project-card').count(), 8);
   for(const [id,file,width,height] of [
     ['mma','mma-cipher-screenshot',2540,1265],
     ['jinx','jinxkiss-screenshot',2555,1212],
@@ -201,6 +196,8 @@ try {
     ['rail','rail',1536,1024],
     ['starlight','starlight-fishing-screenshot',2558,1195],
     ['seas','seven-seas-screenshot',1920,1080],
+    ['cops','bad-cops',1536,1024],
+    ['jurassic','jurassic-domination',1536,1024],
   ]) {
     const art=page.locator(`[data-project="${id}"] img`).first();
     await art.scrollIntoViewIfNeeded();
@@ -211,7 +208,7 @@ try {
     assert.ok(await art.evaluate((node,{width,height})=>node.naturalWidth===width&&node.naturalHeight===height,{width,height}),'original-resolution project image');
     if(file.endsWith('-screenshot')) assert.equal(await art.evaluate(node=>getComputedStyle(node).objectFit),'contain','supplied screenshot is shown without cropping');
   }
-  for (const [id, title] of [['mma', 'MMA Cipher'], ['jinx', 'JinxKiss'], ['hours', 'Small Hours'], ['rail', 'DREADRAIL'], ['starlight', 'Starlight Fishing'], ['seas', 'Seven Seas']]) {
+  for (const [id, title] of [['mma', 'MMA Cipher'], ['jinx', 'JinxKiss'], ['hours', 'Small Hours'], ['rail', 'DREADRAIL'], ['starlight', 'Starlight Fishing'], ['seas', 'Seven Seas'], ['cops', 'Bad Cops'], ['jurassic', 'Jurassic Domination']]) {
     await page.locator(`[data-project="${id}"]`).first().click();
     assert.equal(await page.locator('#project-dialog-title').textContent(), title);
     if (id === 'starlight') assert.equal(await page.locator('#project-dialog .button-primary').getAttribute('href'), 'https://starlight-fishing.web.app');

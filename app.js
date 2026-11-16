@@ -50,7 +50,7 @@ for (const project of projectGrid && !projectGrid.querySelector('.project-card')
   article.innerHTML = `
     <button class="project-art-button${project.imageType === 'screenshot' ? ' project-screenshot' : ''}" data-project="${project.id}" aria-label="Read the ${escapeHTML(project.title)} project dossier">
       <img src="${escapeHTML(project.artwork)}" alt="${escapeHTML(project.imageAlt || project.title)}" width="${project.imageWidth || 1000}" height="${project.imageHeight || 650}" loading="lazy" />
-      <span class="project-art-meta" aria-hidden="true"><span>PROJECT ${project.number}</span></span><span class="project-open" aria-hidden="true">↗</span>
+      <span class="project-art-meta" aria-hidden="true"><span>PROJECT ${project.number}</span>${project.wip ? '<span class="project-wip-pill">WORK IN PROGRESS</span>' : ''}</span><span class="project-open" aria-hidden="true">↗</span>
     </button>
     <div class="project-content"><div class="project-title-row"><h3><button data-project="${project.id}">${escapeHTML(project.title)}</button></h3><span class="project-category">${escapeHTML(project.category)}</span></div><p>${escapeHTML(project.description)}</p><div class="project-tags">${project.tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join('')}</div></div>`;
   projectGrid.append(article);
@@ -62,7 +62,7 @@ function openProject(id) {
   if (!project || !projectDialog || !$('#project-dialog-content')) return;
   $('#project-dialog-content').innerHTML = `
     <img class="project-dialog-art${project.imageType === 'screenshot' ? ' project-screenshot' : ''}" src="${escapeHTML(project.artwork)}" alt="${escapeHTML(project.imageAlt || project.title)}" width="${project.imageWidth || 1000}" height="${project.imageHeight || 650}" />
-    <div class="project-dialog-body"><div class="eyebrow">${escapeHTML(project.category)}</div><h2 id="project-dialog-title">${escapeHTML(project.title)}</h2><p class="project-dialog-short">${escapeHTML(project.short)}</p><p class="project-dialog-description">${escapeHTML(project.description)}</p><div class="case-study-grid"><div><h3>THE CHALLENGE</h3><p>${escapeHTML(project.problem)}</p></div><div><h3>THE APPROACH</h3><p>${escapeHTML(project.approach)}</p></div></div><p class="project-dialog-description">${escapeHTML(project.detail)}</p><div class="project-tags">${project.tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join('')}</div>${project.url ? `<a href="${escapeHTML(project.url)}" target="_blank" rel="noopener noreferrer" class="button button-primary">${escapeHTML(project.linkLabel)} <span aria-hidden="true">↗</span></a>` : '<p class="project-demo-note">DEVELOPMENT PROJECT · Get in touch for a walkthrough.</p><a href="#contact" class="button button-secondary" data-close-project>Ask about this project <span aria-hidden="true">↗</span></a>'}</div>`;
+    <div class="project-dialog-body"><div class="eyebrow">${escapeHTML(project.category)}</div><h2 id="project-dialog-title">${escapeHTML(project.title)}</h2>${project.wip ? '<div class="project-wip-banner mono"><span class="wip-pulse"></span> WORK IN PROGRESS · ACTIVE DEVELOPMENT</div>' : ''}<p class="project-dialog-short">${escapeHTML(project.short)}</p><p class="project-dialog-description">${escapeHTML(project.description)}</p><div class="case-study-grid"><div><h3>THE CHALLENGE</h3><p>${escapeHTML(project.problem)}</p></div><div><h3>THE APPROACH</h3><p>${escapeHTML(project.approach)}</p></div></div><p class="project-dialog-description">${escapeHTML(project.detail)}</p><div class="project-tags">${project.tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join('')}</div>${project.url ? `<a href="${escapeHTML(project.url)}" target="_blank" rel="noopener noreferrer" class="button button-primary">${escapeHTML(project.linkLabel)} <span aria-hidden="true">↗</span></a>` : `<p class="project-demo-note">${project.wip ? 'WORK IN PROGRESS · Currently in active prototype development.' : 'DEVELOPMENT PROJECT · Get in touch for a walkthrough.'}</p><a href="#contact" class="button button-secondary" data-close-project>Ask about this project <span aria-hidden="true">↗</span></a>`}</div>`;
   closeOtherDialogs(projectDialog);
   if (!projectDialog.open) projectDialog.showModal();
   on($('[data-close-project]', projectDialog), 'click', () => projectDialog.close());
@@ -152,6 +152,7 @@ function showReactorFallback() {
 }
 // Import failure never prevents navigation, project dossiers, or the terminal.
 if ($('#reactor')) {
+  mountDysonFallback($('#reactor'));
   import('./reactor.js').then(({ mountReactor }) => {
     if (!lifecycle.active) return;
     reactor = mountReactor($('#reactor'));

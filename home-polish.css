@@ -16,8 +16,9 @@ body[data-page="home"] .hero-copy { display: flex; flex-direction: column; align
 .portrait-action-hint { position: absolute; inset: auto 0 5px; display: flex; justify-content: center; align-items: center; gap: 9px; font: 400 10px/1.5 var(--mono); color: color-mix(in srgb, var(--green) 64%, var(--muted)); letter-spacing: .035em; transition: color .2s, text-shadow .2s; }
 .portrait-launch:hover .portrait-action-hint, .portrait-launch:focus-visible .portrait-action-hint { color: var(--cream); text-shadow: 0 0 10px color-mix(in srgb, var(--green) 45%, transparent); }
 .portrait-conversation[hidden] { display: none; }
-body[data-page="home"] .reactor-panel { align-self: start; min-height: 0; height: var(--hero-stage-height); margin: 0; }
+body[data-page="home"] .reactor-panel { align-self: start; min-height: 0; height: var(--hero-stage-height); margin: 0; contain: layout paint; will-change: transform; }
 body[data-page="home"] .reactor-stage { min-height: 0; height: 100%; margin: 0; }
+body[data-page="home"] .reactor-stage canvas { display: block; width: 100%; height: 100%; transform: translateZ(0); }
 .portrait-projection canvas,.portrait-fallback { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .portrait-fallback { background: currentColor; mask: url('/assets/portrait/evan-projection.svg') center / contain no-repeat; opacity: .52; filter: drop-shadow(0 0 2px color-mix(in srgb, var(--green) 26%, transparent)); }
 .portrait-projection::after { content: ''; position: absolute; inset: 0; pointer-events: none; mask: url('/assets/portrait/evan-projection-eyes.svg') center / contain no-repeat; background: color-mix(in srgb, var(--green) 28%, #9bdff2); opacity: .58; }

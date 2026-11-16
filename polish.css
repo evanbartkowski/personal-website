@@ -419,3 +419,37 @@ button, input, select, textarea { accent-color: var(--green); }
   object-fit: contain;
   background: #05070b;
 }
+
+/* Work In Progress project badges and modal banners */
+.project-wip-pill {
+  font: 8px/1 var(--mono);
+  letter-spacing: .08em;
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  border-radius: 2px;
+  padding: 3px 6px;
+  background: rgba(245, 158, 11, 0.12);
+  margin-left: 6px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.project-wip-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 10px/1.4 var(--mono);
+  letter-spacing: .1em;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin: 6px 0 14px;
+}
+.wip-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}

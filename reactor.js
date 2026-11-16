@@ -8,11 +8,16 @@ export function mountReactor(container, { onStatus } = {}) {
   const empty = { setPaused() {}, setMode() {}, dispose() {} };
   if (!container) return empty;
   let renderer;
-  try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' }); }
-  catch {
-    mountDysonFallback(container);
-    onStatus?.('fallback');
-    return { ...empty, dispose() { container.replaceChildren(); } };
+  try {
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+  } catch {
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    } catch {
+      mountDysonFallback(container);
+      onStatus?.('fallback');
+      return { ...empty, dispose() { container.replaceChildren(); } };
+    }
   }
 
   renderer.setClearColor(0x000000, 0);
@@ -179,7 +184,11 @@ export function mountReactor(container, { onStatus } = {}) {
   const sun = mesh(new THREE.SphereGeometry(.68, 48, 32), new THREE.ShaderMaterial({
     uniforms: sunUniforms,
     vertexShader: `varying vec3 vPosition; varying vec3 vNormal; void main(){vPosition=position;vNormal=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
-    fragmentShader: `precision highp float;
+    fragmentShader: `#ifdef GL_FRAGMENT_PRECISION_HIGH
+      precision highp float;
+      #else
+      precision mediump float;
+      #endif
       uniform float uTime; uniform float uGlow; varying vec3 vPosition; varying vec3 vNormal;
       float hash(vec3 p){p=fract(p*.3183099+vec3(.1,.2,.3));p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
       float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
@@ -194,7 +203,13 @@ export function mountReactor(container, { onStatus } = {}) {
     blending: THREE.AdditiveBlending, side: THREE.DoubleSide, toneMapped: false,
     vertexShader: `uniform float uTime;attribute float aSeed;varying vec2 vUv;varying float vSeed;
       void main(){vUv=uv;vSeed=aSeed;float wave=sin(uv.x*17.-uTime*2.4+aSeed+uv.y*6.283)*sin(uv.x*7.+uTime*1.1);vec3 p=position+normal*wave*.009*(1.-uv.x);gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}`,
-    fragmentShader: `precision highp float;uniform float uTime;varying vec2 vUv;varying float vSeed;
+    fragmentShader: `#ifdef GL_FRAGMENT_PRECISION_HIGH
+      precision highp float;
+      #else
+      precision mediump float;
+      #endif
+      uniform float uTime;varying vec2 vUv;varying float vSeed;
+      float hash(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
       void main(){float t=vUv.x;float streams=.5+.5*sin(t*25.-uTime*3.8+vSeed+sin(vUv.y*12.+uTime)*1.7);float fine=.5+.5*sin(t*49.-uTime*5.+vUv.y*19.);float ridges=pow(streams,.8)*(.6+fine*.4);float cycle=fract(uTime*(.065+fract(vSeed)*.035)+vSeed*.137);float presence=smoothstep(.05,.2,cycle)*(1.-smoothstep(.43,.65,cycle));float fade=smoothstep(0.,.08,t)*(1.-smoothstep(.68,1.,t));float volume=.3+.7*abs(sin(vUv.y*6.283));vec3 orange=vec3(1.,.28,.065),pink=vec3(1.,.16,.39),hot=vec3(1.,.83,.49);vec3 col=mix(orange,pink,smoothstep(.36,1.,t));col=mix(col,hot,pow(ridges,2.)*(1.-t)*.7);float alpha=presence*fade*volume*(.1+ridges*.46);gl_FragColor=vec4(col*(.8+ridges*.55),alpha);}`,
   });
   function taperedPlume(curve, width, seed) {
@@ -381,13 +396,21 @@ export function mountReactor(container, { onStatus } = {}) {
     container.dataset.sunCoreX = cx.toFixed(4);
     container.dataset.sunCoreY = cy.toFixed(4);
   }
+  function isElementInViewport() {
+    if (!container || !container.isConnected) return false;
+    const rect = container.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight || 1000;
+    const vw = window.innerWidth || document.documentElement.clientWidth || 1000;
+    return rect.bottom >= -80 && rect.top <= vh + 80 && rect.right >= -80 && rect.left <= vw + 80;
+  }
   function frame(time) {
     animation = 0;
     if (disposed || lost) return;
     const active = !isPaused() && inView && !document.hidden;
-    if (active && lastTime && time - lastTime < 34) { schedule(); return; }
-    const delta = active && lastTime ? Math.min((time - lastTime) / 1000, .06) : 0;
-    lastTime = active ? time : 0;
+    const timestamp = typeof time === 'number' && Number.isFinite(time) ? time : performance.now();
+    if (active && lastTime && timestamp - lastTime < 16) { schedule(); return; }
+    const delta = active && lastTime ? Math.min((timestamp - lastTime) / 1000, .06) : 0;
+    lastTime = active ? timestamp : 0;
     elapsed += delta;
     machine.rotation.set(.1 + dragY + pointerTiltY, dragX + elapsed * .012 + pointerTiltX, -.13);
     machine.position.y = Math.sin(elapsed * .4) * .045;
@@ -421,23 +444,50 @@ export function mountReactor(container, { onStatus } = {}) {
     if (disposed || lost) return;
     cachedBounds = container.getBoundingClientRect();
     const { width, height } = cachedBounds;
-    if (!width || !height) return;
+    if (!width || !height) {
+      requestAnimationFrame(() => {
+        if (!disposed && !lost && container.isConnected) {
+          const fresh = container.getBoundingClientRect();
+          if (fresh.width && fresh.height) resize();
+        }
+      });
+      return;
+    }
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.position.z = 9.7 * Math.max(1, .95 / camera.aspect);
     camera.updateProjectionMatrix();
     camera.updateMatrixWorld();
+    inView = isElementInViewport();
     schedule();
   };
-  const onScroll = () => { cachedBounds = null; };
+  const onScroll = () => {
+    cachedBounds = null;
+    const visible = isElementInViewport();
+    if (inView !== visible) {
+      inView = visible;
+      lastTime = 0;
+      schedule();
+    }
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', resize, { passive: true });
   const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(resize) : null;
   resizeObserver?.observe(container);
-  if (!resizeObserver) window.addEventListener('resize', resize);
-  const intersectionObserver = typeof IntersectionObserver === 'function' ? new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; lastTime = 0; schedule(); }, { rootMargin: '80px' }) : null;
+  const intersectionObserver = typeof IntersectionObserver === 'function' ? new IntersectionObserver(([entry]) => {
+    inView = entry ? entry.isIntersecting : isElementInViewport();
+    lastTime = 0;
+    schedule();
+  }, { rootMargin: '80px' }) : null;
   intersectionObserver?.observe(container);
-  const visibility = () => { lastTime = 0; schedule(); };
+  const visibility = () => {
+    inView = isElementInViewport();
+    lastTime = 0;
+    schedule();
+  };
   document.addEventListener('visibilitychange', visibility);
+  window.addEventListener('focus', visibility);
+  window.addEventListener('pageshow', visibility);
   motionQuery.addEventListener('change', visibility);
 
   const pointerDown = event => {
@@ -496,6 +546,8 @@ export function mountReactor(container, { onStatus } = {}) {
     window.removeEventListener('resize', resize);
     window.removeEventListener('scroll', onScroll);
     document.removeEventListener('visibilitychange', visibility);
+    window.removeEventListener('focus', visibility);
+    window.removeEventListener('pageshow', visibility);
     motionQuery.removeEventListener('change', visibility);
     for (const [event, listener] of Object.entries(listeners)) canvas.removeEventListener(event, listener);
     const geometries = new Set();

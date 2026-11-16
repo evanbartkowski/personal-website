@@ -10,7 +10,7 @@ export function createArcadeRandom(seed) {
   return () => ((value = (Math.imul(value, 1664525) + 1013904223) >>> 0) / 2 ** 32);
 }
 export const FLAPPY_PIPE_WIDTH = 56;
-const FLAPPY_GAP_HALF = 61;
+const FLAPPY_GAP_HALF = 57;
 export const PONG_PLAYER_HEIGHT = 60;
 export const PONG_AI_HEIGHT = 68;
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
@@ -50,14 +50,14 @@ export function stepArcade(state, seconds, input = {}, random = Math.random) {
   while (remaining > 0 && next.status === 'running') {
     const dt = Math.min(remaining, 1 / 120); remaining -= dt; next.elapsed += dt;
     if (next.mode === 'flappy') {
-      next.bird.vy += 795 * dt; next.bird.y += next.bird.vy * dt;
+      next.bird.vy += 815 * dt; next.bird.y += next.bird.vy * dt;
       next.spawn -= dt;
       if (next.spawn <= 0) {
         const previous = next.pipes.at(-1)?.gapY ?? 180;
         next.pipes.push({x: 660, gapY: clamp(previous + (roll(random) - .5) * 160, 96, 252), gapHalf: FLAPPY_GAP_HALF - Math.min(next.score[0], 20) * .4, passed: false});
-        next.spawn += 1.4 - Math.min(next.score[0], 20) * .007;
+        next.spawn += 1.36 - Math.min(next.score[0], 20) * .007;
       }
-      const speed = 185 + Math.min(next.score[0], 24) * 2.5;
+      const speed = 198 + Math.min(next.score[0], 24) * 2.6;
       for (const pipe of next.pipes) {
         const gapHalf = pipe.gapHalf ?? FLAPPY_GAP_HALF;
         pipe.x -= speed * dt;

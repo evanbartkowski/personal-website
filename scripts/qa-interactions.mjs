@@ -40,11 +40,11 @@ try {
   await page.waitForFunction(() => document.documentElement.dataset.navigationState === 'idle');
   assert.equal(new URL(page.url()).pathname,'/projects.html');
   assert.equal(await page.locator('main #background,main #credentials,main #about,main #home').count(),0);
-  assert.equal(await page.locator('.project-card').count(), 6);
+  assert.equal(await page.locator('.project-card').count(), 8);
   await page.locator('[data-filter="web"]').click();
   assert.equal(await page.locator('.project-card:visible').count(), 3);
   await page.locator('[data-filter="worlds"]').click();
-  assert.equal(await page.locator('.project-card:visible').count(), 3);
+  assert.equal(await page.locator('.project-card:visible').count(), 5);
   await page.locator('[data-filter="all"]').click();
   await page.locator('.terminal-launch').first().click();
   const input = page.locator('#terminal-input');
@@ -142,7 +142,7 @@ try {
   assert.ok((await page.locator('#terminal-output>div').last().innerText()).includes('visitor workspace'));
   await command('clear');
   await command('ls projects');
-  assert.equal(await page.locator('#terminal-output .terminal-action').count(), 6);
+  assert.equal(await page.locator('#terminal-output .terminal-action').count(), 8);
   await input.fill('open sta');
   await input.press('Tab');
   assert.equal(await input.inputValue(), 'open starlight');
@@ -229,7 +229,7 @@ try {
   assert.ok((await fallback.locator('#terminal-output').innerText()).includes('CyberMaxx'));
   assert.deepEqual(errors, []);
   assert.ok(requestStates.every(state => state === 'thinking'));
-  console.log(JSON.stringify({result: 'passed', projects: 6, filters: '3 web / 3 worlds', routing: 'terminal page commands navigate between actual documents and preserve browser-local workspace', terminal: 'content, six project links, completion, history, virtual files, nano, persistence, text filters, pipelines, rm/sudo/su permission denial preserves files, safe text, hidden commands, mobile', chat: 'availability, bounded follow-ups, error/retry, billing, actual thinking/responding/idle states, reduced motion', rendering: 'WebGL fallback and ignored legacy pause preference', mockedChatRequests: payloads.length, pageErrors: errors}));
+  console.log(JSON.stringify({result: 'passed', projects: 8, filters: '3 web / 5 worlds', routing: 'terminal page commands navigate between actual documents and preserve browser-local workspace', terminal: 'content, eight project links, completion, history, virtual files, nano, persistence, text filters, pipelines, rm/sudo/su permission denial preserves files, safe text, hidden commands, mobile', chat: 'availability, bounded follow-ups, error/retry, billing, actual thinking/responding/idle states, reduced motion', rendering: 'WebGL fallback and ignored legacy pause preference', mockedChatRequests: payloads.length, pageErrors: errors}));
 } finally {
   await browser.close();
 }

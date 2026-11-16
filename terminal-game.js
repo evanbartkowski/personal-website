@@ -11,7 +11,7 @@ export function mountTerminalArcade(panel, {dialog, onExit = () => {}} = {}) {
   const on = (node, name, fn, options = {}) => node.addEventListener(name, fn, {...options, signal: controller.signal});
   panel.className = 'terminal-game-panel';
   panel.setAttribute('aria-label', 'Space arcade');
-  panel.innerHTML = `<div class="arcade-top"><span class="arcade-label">ORBITAL ARCADE</span><div class="arcade-tabs" role="group" aria-label="Choose a game"><button type="button" data-arcade-mode="flappy">Flappy Orbit</button><button type="button" data-arcade-mode="pong">Pong</button></div></div><div class="arcade-hud"><strong class="arcade-title">Flappy Orbit</strong><span class="arcade-score"></span></div><div class="arcade-record" role="status"><span>ALL-TIME HIGH</span><strong>Loading…</strong></div><p class="arcade-record-status" role="status"></p><div class="arcade-arena"><canvas class="terminal-game-canvas" width="960" height="540" tabindex="0" aria-label="Flappy Orbit game. Space or tap to flap. P pauses."></canvas><div class="arcade-overlay"><strong></strong><span></span><button type="button" data-arcade-action="start">Start flight</button></div></div><p class="arcade-instructions"></p><p class="arcade-announcement sr-only" role="status"></p><div class="terminal-game-controls"><button type="button" data-arcade-action="flap">Flap <span>Space / tap</span></button><button type="button" data-arcade-hold="-1" aria-label="Move paddle up">↑</button><button type="button" data-arcade-hold="1" aria-label="Move paddle down">↓</button><button type="button" data-arcade-action="pause">Pause</button><button type="button" data-arcade-action="restart">Restart</button><button type="button" data-arcade-action="shell">Back to shell</button></div>`;
+  panel.innerHTML = `<div class="arcade-top"><span class="arcade-label">ORBITAL ARCADE</span><div class="arcade-top-actions"><div class="arcade-tabs" role="group" aria-label="Choose a game"><button type="button" data-arcade-mode="flappy">Flappy Orbit</button><button type="button" data-arcade-mode="pong">Pong</button></div><button type="button" class="arcade-fullscreen-toggle" data-arcade-action="fullscreen" aria-label="Toggle fullscreen mode" title="Toggle fullscreen (F)"><span class="fullscreen-icon" aria-hidden="true">⛶</span></button></div></div><div class="arcade-hud"><strong class="arcade-title">Flappy Orbit</strong><span class="arcade-score"></span></div><div class="arcade-record" role="status"><span>ALL-TIME HIGH</span><strong>Loading…</strong></div><p class="arcade-record-status" role="status"></p><div class="arcade-arena"><canvas class="terminal-game-canvas" width="960" height="540" tabindex="0" aria-label="Flappy Orbit game. Space or tap to flap. P pauses. F for fullscreen."></canvas><div class="arcade-overlay"><strong></strong><span></span><button type="button" data-arcade-action="start">Start flight</button></div></div><p class="arcade-instructions"></p><p class="arcade-announcement sr-only" role="status"></p><div class="terminal-game-controls"><button type="button" data-arcade-action="flap">Flap <span>Space / tap</span></button><button type="button" data-arcade-hold="-1" aria-label="Move paddle up">↑</button><button type="button" data-arcade-hold="1" aria-label="Move paddle down">↓</button><button type="button" data-arcade-action="pause">Pause</button><button type="button" data-arcade-action="restart">Restart</button><button type="button" data-arcade-action="fullscreen" aria-label="Toggle fullscreen">Fullscreen <span>F</span></button><button type="button" data-arcade-action="shell">Back to shell</button></div>`;
   const $ = selector => panel.querySelector(selector);
   const canvas = $('.terminal-game-canvas'); const context = canvas.getContext('2d');
   const overlay = $('.arcade-overlay'); const score = $('.arcade-score');
@@ -171,8 +171,27 @@ export function mountTerminalArcade(panel, {dialog, onExit = () => {}} = {}) {
     if (state.status === 'running') frame = requestAnimationFrame(tick); else {stop();if (state.mode === 'flappy' && state.status === 'over') publishFlight();}
   }
   function run() {if (available() && state.status === 'running' && !frame) {lastTime = 0; frame = requestAnimationFrame(tick);}}
+  function toggleFullscreen() {
+    const isFs = document.fullscreenElement === panel || document.webkitFullscreenElement === panel || panel.classList.contains('arcade-fullscreen');
+    if (isFs) {
+      delete panel.dataset.manualFs;
+      panel.classList.remove('arcade-fullscreen');
+      if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
+      else if (document.webkitFullscreenElement) document.webkitExitFullscreen?.();
+    } else {
+      panel.dataset.manualFs = 'true';
+      panel.classList.add('arcade-fullscreen');
+      if (panel.requestFullscreen) panel.requestFullscreen().catch(() => {});
+      else if (panel.webkitRequestFullscreen) panel.webkitRequestFullscreen();
+    }
+    const btns = panel.querySelectorAll('[data-arcade-action="fullscreen"]');
+    for (const b of btns) b.setAttribute('aria-pressed', String(!isFs));
+    canvas.focus({preventScroll: true});
+    draw();
+  }
   function act(action) {
     if (disposed) return;
+    if (action === 'fullscreen') { toggleFullscreen(); return; }
     if (action === 'shell') {stop();resetFlight(); state = arcadeAction(state, 'quit'); describe(); draw(); onExit(); return;}
     if (action === 'pause') action = state.status === 'paused' ? 'start' : 'pause';
     if (action === 'restart' || action === 'start' && ['over', 'quit'].includes(state.status)) {
@@ -207,12 +226,22 @@ export function mountTerminalArcade(panel, {dialog, onExit = () => {}} = {}) {
   });
   on(canvas, 'keydown', event => {
     const key = event.key.toLowerCase();
-    if ([' ', 'arrowup', 'arrowdown', 'w', 's', 'p', 'r'].includes(key)) event.preventDefault(); else return;
-    if (key === 'p' && !event.repeat) act('pause');
+    if ([' ', 'arrowup', 'arrowdown', 'w', 's', 'p', 'r', 'f'].includes(key)) event.preventDefault(); else return;
+    if (key === 'f' && !event.repeat) act('fullscreen');
+    else if (key === 'p' && !event.repeat) act('pause');
     else if (key === 'r' && !event.repeat) act('restart');
     else if (state.mode === 'flappy' && (key === ' ' || key === 'arrowup') && !event.repeat) act('flap');
     else if (state.mode === 'pong') keys.add(key);
   });
+  const onFsChange = () => {
+    const inFs = document.fullscreenElement === panel || document.webkitFullscreenElement === panel;
+    if (!inFs && !panel.dataset.manualFs) panel.classList.remove('arcade-fullscreen');
+    const btns = panel.querySelectorAll('[data-arcade-action="fullscreen"]');
+    for (const b of btns) b.setAttribute('aria-pressed', String(panel.classList.contains('arcade-fullscreen') || inFs));
+    draw();
+  };
+  on(document, 'fullscreenchange', onFsChange);
+  on(document, 'webkitfullscreenchange', onFsChange);
   on(canvas, 'keyup', event => keys.delete(event.key.toLowerCase()));
   on(canvas, 'blur', event => {keys.clear(); if (!panel.contains(event.relatedTarget) && state.status === 'running') pause();});
   on(canvas, 'pointerdown', event => {
@@ -240,5 +269,5 @@ export function mountTerminalArcade(panel, {dialog, onExit = () => {}} = {}) {
   const observer = new IntersectionObserver(entries => {visible = entries[0].isIntersecting; if (!visible) pause(); else run();}, {threshold: .15}); observer.observe(canvas);
   recordTimer = setInterval(() => {if (available() && state.mode === 'flappy') refreshRecord();}, 60000);
   describe(); draw();
-  return {open, pause, quit() {if (disposed) return; stop();resetFlight(); state = arcadeAction(state, 'quit'); describe(); draw();}, get snapshot() {return copy(state);}, dispose() {disposed = true;stop();resetFlight();clearInterval(recordTimer);observer.disconnect();controller.abort();panel.dataset.outcome = 'disposed';}};
+  return {open, pause, quit() {if (disposed) return; stop();resetFlight(); state = arcadeAction(state, 'quit'); describe(); draw();}, get snapshot() {return copy(state);}, dispose() {disposed = true;stop();resetFlight();clearInterval(recordTimer);observer.disconnect();controller.abort();if (panel.classList.contains('arcade-fullscreen')) {panel.classList.remove('arcade-fullscreen');if (document.fullscreenElement) document.exitFullscreen?.().catch(()=>{});}panel.dataset.outcome = 'disposed';}};
 }
