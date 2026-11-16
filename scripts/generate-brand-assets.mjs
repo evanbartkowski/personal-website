@@ -32,9 +32,9 @@ try {
   const pngBuffers = {};
   for (const [name, size] of iconSizes) {
     await page.setViewportSize({ width: size, height: size });
-    await page.setContent(`<!doctype html><html><head><style>html,body{margin:0;width:100%;height:100%;background:#000}img{display:block;width:100%;height:100%}</style></head><body><img src="${logoURL}" alt="Evan Bartkowski cyber shield logo"></body></html>`);
+    await page.setContent(`<!doctype html><html><head><style>html,body{margin:0;padding:0;width:100%;height:100%;background:transparent}img{display:block;width:100%;height:100%}</style></head><body><img src="${logoURL}" alt="Evan Bartkowski CompTIA CSAP cybersecurity logo"></body></html>`);
     await page.locator('img').evaluate(image => image.decode());
-    const buffer = await page.screenshot({ path: join(brandDirectory, name) });
+    const buffer = await page.screenshot({ path: join(brandDirectory, name), omitBackground: true });
     pngBuffers[size] = buffer;
   }
 
@@ -95,7 +95,7 @@ try {
   </style></head><body>
     <svg class="stars" width="1200" height="630" aria-hidden="true">${stars}</svg><div class="frame"></div>
     <div class="content"><p class="eyebrow">EVAN BARTKOWSKI / PORTFOLIO</p><h1>EVAN<span>BARTKOWSKI</span></h1><p class="role">Cybersecurity Engineer &amp; Developer</p><p class="focus">SECURITY OPERATIONS / LINUX / AI / SOFTWARE</p></div>
-    <span class="cross">+</span><div class="orbit"><img src="${logoURL}" alt="Evan Bartkowski cyber shield logo"></div><span class="point"></span>
+    <span class="cross">+</span><div class="orbit"><img src="${logoURL}" alt="Evan Bartkowski CompTIA CSAP cybersecurity logo"></div><span class="point"></span>
     <footer><b>EXPERIENCE · CREDENTIALS · PROJECTS</b><span>evanbartkowski.com</span></footer>
   </body></html>`);
   await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(image => image.decode())); });

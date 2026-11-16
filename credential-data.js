@@ -35,7 +35,7 @@ export const credentialDocuments = [
     detail: 'CompTIA Security Analytics Professional (CSAP) stackable career pathway certification, earned by completing both CompTIA Security+ and CompTIA CySA+. Candidate ID: COMP001022759348. Valid through June 7, 2028.',
     pdf: `${base}comptia-cysa-plus.pdf`, preview: `${base}comptia-csap.png`,
     originalImage: `${base}comptia-csap-badge.png`,
-    downloadName: 'Evan-Bartkowski-CompTIA-CSAP.png',
+    downloadName: 'Evan-Bartkowski-CompTIA-CSAP-Pathway.pdf',
     verification: 'http://verify.CompTIA.org',
   },
   {

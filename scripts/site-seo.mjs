@@ -22,7 +22,7 @@ export function structuredData({title, description, path, article}) {
   const url = absolute(path);
   const graph = [
     {'@type':'Person', '@id':personId, name:profile.name, url:`${siteOrigin}/`, jobTitle:profile.role, worksFor:{'@type':'Organization',name:profile.company}, sameAs:[profile.github,profile.linkedin], alumniOf:{'@type':'CollegeOrUniversity',name:'University of Maryland, Baltimore County'}, knowsAbout:['Cybersecurity', 'SIEM implementation', 'Endpoint detection and response', 'Network defense', 'Linux systems programming', 'Python', 'C', 'Software engineering', 'Machine learning', 'Three.js'], hasCredential:[{'@type':'EducationalOccupationalCredential','name':'CompTIA Security+','credentialCategory':'certification','recognizedBy':{'@type':'Organization','name':'CompTIA'}},{'@type':'EducationalOccupationalCredential','name':'CompTIA CySA+','credentialCategory':'certification','recognizedBy':{'@type':'Organization','name':'CompTIA'}},{'@type':'EducationalOccupationalCredential','name':'Google Cloud Certified Professional Cloud Architect','credentialCategory':'certification','recognizedBy':{'@type':'Organization','name':'Google Cloud'}},{'@type':'EducationalOccupationalCredential','name':'CompTIA Security Analytics Professional (CSAP)','credentialCategory':'certification','recognizedBy':{'@type':'Organization','name':'CompTIA'}},{'@type':'EducationalOccupationalCredential','name':'CompTIA Network+','credentialCategory':'certification','recognizedBy':{'@type':'Organization','name':'CompTIA'}}]},
-    {'@type':'ImageObject', '@id':logoId, url:absolute('/assets/brand/logo-512.png'), contentUrl:absolute('/assets/brand/logo-512.png'), name:'Evan Bartkowski website cyber shield logo', width:512, height:512},
+    {'@type':'ImageObject', '@id':logoId, url:absolute('/assets/brand/logo-512.png'), contentUrl:absolute('/assets/brand/logo-512.png'), name:'Evan Bartkowski website CompTIA CSAP cybersecurity logo', width:512, height:512},
     {'@type':'WebSite', '@id':siteId, url:`${siteOrigin}/`, name:profile.name, alternateName:'Evan Bartkowski Portfolio', description:pages[0].description, publisher:{'@id':personId}, image:{'@id':logoId}, inLanguage:'en-US'},
   ];
   const page = {'@type':path === '/about.html' ? 'ProfilePage' : ['/projects.html','/credentials.html','/blog.html'].includes(path) ? 'CollectionPage' : 'WebPage', '@id':`${url}#webpage`, url, name:title, description, isPartOf:{'@id':siteId}, about:{'@id':personId}, primaryImageOfPage:{'@type':'ImageObject',url:absolute('/assets/social-preview.png'),width:1200,height:630}, inLanguage:'en-US'};
@@ -51,7 +51,7 @@ export function structuredData({title, description, path, article}) {
 export function renderHead(page, verification = {}) {
   const {title,description,path,article} = page;
   const image = absolute('/assets/social-preview.png');
-  const imageAlt = 'Evan Bartkowski — Cybersecurity Engineer & Developer, with his silvery cyber shield website logo.';
+  const imageAlt = 'Evan Bartkowski — Cybersecurity Engineer & Developer, with his silvery CSAP cybersecurity website logo.';
   const meta = (attribute, name, value) => `  <meta ${attribute}="${name}" content="${escapeHTML(value)}" />`;
   return [
     `  <title>${escapeHTML(title)}</title>`,
