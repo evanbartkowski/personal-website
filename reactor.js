@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from '/vendor/three.module.js';
 import { mountDysonFallback } from './dyson-fallback.js';
 
 // Five independently rotating orbital megastructures around a procedural star.
